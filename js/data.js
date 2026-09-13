@@ -264,7 +264,8 @@ window.APP_DATA = {
       "en": "Erpin",
       "group": "韩服3星",
       "aliases": [
-        "Erpin"
+        "Erpin",
+        "猪芬"
       ],
       "img": "assets/chars/Erpin.png",
       "fav": {
@@ -273,7 +274,9 @@ window.APP_DATA = {
         ],
         "like": [
           "F1",
-          "F2"
+          "F2",
+          "F36",
+          "F31"
         ],
         "hate": [
           "F27",
@@ -908,7 +911,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F2",
-          "F27"
+          "F27",
+          "F36"
         ],
         "hate": [
           "F63",
