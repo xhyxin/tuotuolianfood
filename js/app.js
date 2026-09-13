@@ -286,6 +286,21 @@
     toastTimer = setTimeout(function () { t.classList.add("hidden"); }, 5200);
   }
 
+  $("versionInfo").textContent = "v" + D.version + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
+  // 版本号显示：网页版以服务器根目录的 版本号校对.txt 为准（在 GitHub 上改 txt，F5 即生效）；
+  // exe / APK 没有这个文件，显示 data.js 里的版本（检查更新后会自动对齐 txt）。
+  if (location.protocol === "http:" || location.protocol === "https:") {
+    fetch("版本号校对.txt", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.text() : null; })
+      .then(function (t) {
+        t = (t || "").trim().replace(/^[vV]/, "");
+        if (t && /^\d+(\.\d+){0,3}$/.test(t)) {
+          $("versionInfo").textContent = "v" + t + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
+        }
+      })
+      .catch(function () {});
+  }
+
   // ---------- init ----------
   $("versionInfo").textContent = "v" + D.version + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
   // 托管到外网时没有本地更新服务（/api/update 只在 exe 里），
