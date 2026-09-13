@@ -58,7 +58,8 @@
   // ---------- 渲染 ----------
   function badge(att, pos) {
     if (!att) return "";
-    return '<img class="badge b-' + pos + '" src="' + D.attitude[att] + '" title="' +
+    // badge-like / badge-love / badge-hate：样式里给不同态度的角标配对应色柔光
+    return '<img class="badge b-' + pos + " badge-" + att + '" src="' + D.attitude[att] + '" title="' +
       ({ love: "超喜欢", like: "喜欢", hate: "讨厌" })[att] + '">';
   }
 
