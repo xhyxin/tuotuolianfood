@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>坨坨脸 · 角色食物图鉴</title>
+<link rel="stylesheet" href="css/style.css?v=20260913">
+</head>
+<body>
+<header id="topbar">
+  <div class="brand">
+    <span class="logo">🍰</span>
+    <div class="titles">
+      <h1>坨坨脸 · 角色食物图鉴</h1>
+      <span class="sub" id="versionInfo"></span>
+    </div>
+  </div>
+  <div class="toolbar">
+    <button id="btnUpdate" title="检查并下载新角色数据">检查更新</button>
+  </div>
+</header>
+
+<div id="hintBar"><span id="hintText"></span></div>
+
+<div id="personaBar"></div>
+
+<main id="panels">
+  <section class="panel" id="leftPanel">
+    <div class="panel-head">
+      <h2>角色</h2><span class="count" id="charCount"></span>
+      <input id="charSearch" class="panel-search" type="text"
+             placeholder="搜索角色 / 别名…" autocomplete="off">
+    </div>
+    <div class="grid" id="charGrid"></div>
+    <div class="empty-msg hidden" id="charEmpty">没有匹配的角色</div>
+  </section>
+  <section class="panel" id="rightPanel">
+    <div class="panel-head">
+      <h2>食物</h2><span class="count" id="foodCount"></span>
+      <input id="foodSearch" class="panel-search" type="text"
+             placeholder="搜索食物 / 别名…" autocomplete="off">
+    </div>
+    <div class="grid" id="foodGrid"></div>
+    <div class="empty-msg hidden" id="foodEmpty">没有匹配的食物</div>
+  </section>
+</main>
+
+<div id="toast" class="hidden"></div>
+
+<script src="js/data.js?v=20260913"></script>
+<script src="js/updater.js?v=20260913"></script>
+<script src="js/app.js?v=20260913"></script>
+</body>
+</html>
