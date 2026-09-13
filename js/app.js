@@ -312,5 +312,26 @@
     host === "127.0.0.1" || host === "localhost" || host === "::1" || host === "[::1]" ||
     host === "appassets.androidplatform.net";
   if (!isLocal) $("btnUpdate").style.display = "none";
+  // 客户端下载：和「检查更新」相反，只在网页托管版显示
+  // （exe / APK 本身就是客户端，file:// 双击打开也不显示）。
+  // 下载地址配置在 index.html 的 #dlModal 里（GitHub 直链 + 蓝奏云分享页）。
+  if (!isLocal) {
+    $("btnDownload").style.display = "inline-block";
+    var closeDl = function () { $("dlModal").classList.add("hidden"); };
+    $("btnDownload").addEventListener("click", function () {
+      $("dlModal").classList.remove("hidden");
+    });
+    $("btnDlClose").addEventListener("click", closeDl);
+    $("dlModal").addEventListener("click", function (e) {
+      if (e.target.classList.contains("dl-mask") || e.target.id === "dlModal") {
+        closeDl();
+      } else if (e.target.closest && e.target.closest("a.dl-btn")) {
+        setTimeout(closeDl, 400); // 新标签页已打开，顺手收起弹窗
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") closeDl();
+    });
+  }
   render();
 })();
