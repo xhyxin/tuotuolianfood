@@ -1,5 +1,5 @@
 window.APP_DATA = {
-  "version": "1.1",
+  "version": "1.6",
   "updatedAt": "2026-09-14",
   "attitude": {
     "like": "assets/ui/like.png",
@@ -3539,7 +3539,7 @@ window.APP_DATA = {
         "youngchun",
         "口香糖"
       ],
-      "img": "assets/chars/youngchun.png",
+      "img": "assets/chars/Youngchun.png",
       "fav": {
         "love": [
           "F67"
