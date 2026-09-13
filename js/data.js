@@ -1,6 +1,6 @@
 window.APP_DATA = {
-  "version": "1.0.0",
-  "updatedAt": "2026-09-13",
+  "version": "1.1",
+  "updatedAt": "2026-09-14",
   "attitude": {
     "like": "assets/ui/like.png",
     "hate": "assets/ui/hate.png",
@@ -3528,6 +3528,29 @@ window.APP_DATA = {
       },
       "source": "manual",
       "personality": "gloomy"
+    },
+    {
+      "id": "ceshi",
+      "name": "测试",
+      "en": "ceshi",
+      "group": "韩服3星",
+      "personality": "resonance",
+      "aliases": [
+        "ceshi"
+      ],
+      "img": "assets/chars/ceshi.png",
+      "fav": {
+        "love": [
+          "F41"
+        ],
+        "like": [
+          "F59"
+        ],
+        "hate": [
+          "F67"
+        ]
+      },
+      "source": "manual"
     }
   ],
   "foods": [

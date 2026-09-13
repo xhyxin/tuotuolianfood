@@ -260,7 +260,7 @@
         if (res.updated && res.updated.length) {
           btn.disabled = false;
           btn.textContent = "检查更新";
-          toast("更新完成：已添加 " + res.updated.join("、") + "，页面正在刷新加载新数据…");
+          toast("更新完成：已更新到 " + res.updated.join("、") + "，页面正在刷新加载新数据…");
           setTimeout(function () { location.reload(); }, 1800);
           return;
         }
