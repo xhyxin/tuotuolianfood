@@ -3528,30 +3528,6 @@ window.APP_DATA = {
       },
       "source": "manual",
       "personality": "gloomy"
-    },
-    {
-      "id": "youngchun",
-      "name": "咏春",
-      "en": "youngchun",
-      "group": "韩服3星",
-      "personality": "resonance",
-      "aliases": [
-        "youngchun",
-        "口香糖"
-      ],
-      "img": "assets/chars/Youngchun.png",
-      "fav": {
-        "love": [
-          "F67"
-        ],
-        "like": [
-          "F22"
-        ],
-        "hate": [
-          "F25"
-        ]
-      },
-      "source": "manual"
     }
   ],
   "foods": [
