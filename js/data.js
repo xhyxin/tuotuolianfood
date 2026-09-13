@@ -3528,29 +3528,6 @@ window.APP_DATA = {
       },
       "source": "manual",
       "personality": "gloomy"
-    },
-    {
-      "id": "ceshi",
-      "name": "测试",
-      "en": "ceshi",
-      "group": "韩服3星",
-      "personality": "resonance",
-      "aliases": [
-        "ceshi"
-      ],
-      "img": "assets/chars/ceshi.png",
-      "fav": {
-        "love": [
-          "F41"
-        ],
-        "like": [
-          "F59"
-        ],
-        "hate": [
-          "F67"
-        ]
-      },
-      "source": "manual"
     }
   ],
   "foods": [
