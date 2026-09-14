@@ -6,7 +6,7 @@
 <title>坨坨脸 · 角色食物图鉴</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
 <link rel="preload" href="assets/fonts/bobosubset.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.0-6aa6fd17">
+<link rel="stylesheet" href="css/style.css?v=2.0-6aa78384">
 </head>
 <body>
 <header id="topbar">
@@ -20,6 +20,7 @@
   <div class="toolbar">
     <button id="btnDownload" title="下载电脑/安卓客户端">客户端下载</button>
     <button id="btnUpdate" title="检查并下载新角色数据">检查更新</button>
+    <button id="btnAbout" title="关于作者 / 反馈方式"><span class="lg">关于作者</span><span class="sm">关于</span></button>
   </div>
 </header>
 
@@ -78,8 +79,34 @@
   </div>
 </div>
 
-<script src="js/data.js?v=2.0-6aa6fd17"></script>
-<script src="js/updater.js?v=2.0-6aa6fd17"></script>
-<script src="js/app.js?v=2.0-6aa6fd17"></script>
+<!-- 关于作者弹窗：三端都显示（app.js 统一绑定） -->
+<div id="aboutModal" class="hidden">
+  <div class="dl-mask"></div>
+  <div class="dl-card" role="dialog" aria-label="关于作者">
+    <button class="dl-close" id="btnAboutClose" title="关闭">×</button>
+    <h3>🍮 关于作者</h3>
+    <p class="dl-sub">坨坨脸食物图鉴 · 个人同人作品<br>数据整理自韩服 wiki，仅供交流学习，游戏版权归 Epid Games 所有。</p>
+    <div class="ab-row">
+      <span class="ab-ico">🐙</span>
+      <div class="ab-info"><b>GitHub 仓库</b><span>xhyxin/tuotuolianfood</span></div>
+      <a class="dl-btn gh ab-act" href="https://github.com/xhyxin/tuotuolianfood" target="_blank" rel="noopener">打开</a>
+    </div>
+    <div class="ab-row">
+      <span class="ab-ico">🌐</span>
+      <div class="ab-info"><b>网页版</b><span>www.tuotuolianfood.icu</span></div>
+      <a class="dl-btn lz ab-act" href="https://www.tuotuolianfood.icu/" target="_blank" rel="noopener">打开</a>
+    </div>
+    <div class="ab-row">
+      <span class="ab-ico">✉️</span>
+      <div class="ab-info"><b>邮箱</b><span id="aboutMail">3161649035@qq.com</span></div>
+      <button class="dl-btn lz ab-act" id="btnCopyMail" type="button">复制</button>
+    </div>
+    <p class="dl-note">发现数据错误、想补充角色，欢迎到 GitHub 提 issue 或发邮件告诉我～</p>
+  </div>
+</div>
+
+<script src="js/data.js?v=2.0-6aa78384"></script>
+<script src="js/updater.js?v=2.0-6aa78384"></script>
+<script src="js/app.js?v=2.0-6aa78384"></script>
 </body>
 </html>

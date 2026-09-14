@@ -312,26 +312,53 @@
     host === "127.0.0.1" || host === "localhost" || host === "::1" || host === "[::1]" ||
     host === "appassets.androidplatform.net";
   if (!isLocal) $("btnUpdate").style.display = "none";
+
+  // ---------- 弹窗（客户端下载 / 关于作者） ----------
+  function bindModal(btnId, modalId, closeId) {
+    var modal = $(modalId);
+    var close = function () { modal.classList.add("hidden"); };
+    $(btnId).addEventListener("click", function () {
+      modal.classList.remove("hidden");
+    });
+    $(closeId).addEventListener("click", close);
+    modal.addEventListener("click", function (e) {
+      if (e.target.classList.contains("dl-mask") || e.target === modal) {
+        close();
+      } else if (e.target.closest && e.target.closest("a.dl-btn")) {
+        setTimeout(close, 400); // 新标签页已打开，顺手收起弹窗
+      }
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") close();
+    });
+  }
+  // 关于作者：三端都显示（内容在 index.html 的 #aboutModal 里）
+  bindModal("btnAbout", "aboutModal", "btnAboutClose");
+  $("btnCopyMail").addEventListener("click", function () {
+    var mail = $("aboutMail").textContent.trim();
+    var ok = function () { toast("邮箱已复制：" + mail); };
+    var fallback = function () { // 老 WebView / 非安全上下文没有 clipboard API
+      var ta = document.createElement("textarea");
+      ta.value = mail;
+      ta.style.cssText = "position:fixed;opacity:0";
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand("copy"); ok(); }
+      catch (err) { toast("复制失败，手动记一下：" + mail); }
+      document.body.removeChild(ta);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mail).then(ok, fallback);
+    } else {
+      fallback();
+    }
+  });
   // 客户端下载：和「检查更新」相反，只在网页托管版显示
   // （exe / APK 本身就是客户端，file:// 双击打开也不显示）。
   // 下载地址配置在 index.html 的 #dlModal 里（GitHub 直链 + 蓝奏云分享页）。
   if (!isLocal) {
     $("btnDownload").style.display = "inline-block";
-    var closeDl = function () { $("dlModal").classList.add("hidden"); };
-    $("btnDownload").addEventListener("click", function () {
-      $("dlModal").classList.remove("hidden");
-    });
-    $("btnDlClose").addEventListener("click", closeDl);
-    $("dlModal").addEventListener("click", function (e) {
-      if (e.target.classList.contains("dl-mask") || e.target.id === "dlModal") {
-        closeDl();
-      } else if (e.target.closest && e.target.closest("a.dl-btn")) {
-        setTimeout(closeDl, 400); // 新标签页已打开，顺手收起弹窗
-      }
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") closeDl();
-    });
+    bindModal("btnDownload", "dlModal", "btnDlClose");
   }
   render();
 })();
