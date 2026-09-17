@@ -1,6 +1,6 @@
 window.APP_DATA = {
-  "version": "2.0",
-  "updatedAt": "2026-09-14",
+  "version": "2.1",
+  "updatedAt": "2026-09-17",
   "attitude": {
     "like": "assets/ui/like.png",
     "hate": "assets/ui/hate.png",
@@ -22,11 +22,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F8",
-          "F5"
+          "F5",
+          "F76"
         ],
         "hate": [
           "F2",
-          "F14"
+          "F14",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -47,12 +49,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F11",
-          "F18"
+          "F18",
+          "F74"
         ],
         "hate": [
           "F1",
           "F20",
-          "F68"
+          "F68",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -69,7 +73,8 @@ window.APP_DATA = {
       "img": "assets/chars/Vivi.png",
       "fav": {
         "love": [
-          "F9"
+          "F9",
+          "F84"
         ],
         "like": [
           "F18",
@@ -80,11 +85,14 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F74"
         ],
         "hate": [
           "F5",
-          "F20"
+          "F20",
+          "F76",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -110,7 +118,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F27",
-          "F25"
+          "F25",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -129,11 +138,13 @@ window.APP_DATA = {
         "love": [],
         "like": [
           "F29",
-          "F9"
+          "F9",
+          "F84"
         ],
         "hate": [
           "F4",
-          "F27"
+          "F27",
+          "F73"
         ]
       },
       "source": "wiki",
@@ -161,11 +172,13 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F79"
         ],
         "hate": [
           "F9",
-          "F27"
+          "F27",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -182,7 +195,8 @@ window.APP_DATA = {
       "img": "assets/chars/Naia.png",
       "fav": {
         "love": [
-          "F56"
+          "F56",
+          "F87"
         ],
         "like": [
           "F16",
@@ -193,7 +207,8 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F83"
         ],
         "hate": [
           "F12",
@@ -215,15 +230,19 @@ window.APP_DATA = {
       "img": "assets/chars/Kyarot.png",
       "fav": {
         "love": [
-          "F50"
+          "F50",
+          "F80"
         ],
         "like": [
           "F15",
-          "F14"
+          "F14",
+          "F70"
         ],
         "hate": [
           "F5",
-          "F9"
+          "F9",
+          "F76",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -251,11 +270,14 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F79"
         ],
         "hate": [
           "F23",
-          "F5"
+          "F5",
+          "F71",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -284,7 +306,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F27",
-          "F25"
+          "F25",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -305,11 +328,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F24",
-          "F21"
+          "F21",
+          "F83"
         ],
         "hate": [
           "F5",
-          "F25"
+          "F25",
+          "F76",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -335,7 +361,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F20",
-          "F18"
+          "F18",
+          "F74",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -360,7 +388,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F23",
-          "F6"
+          "F6",
+          "F71",
+          "F78"
         ]
       },
       "source": "wiki",
@@ -386,7 +416,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F19",
-          "F20"
+          "F20",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -412,7 +443,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F21",
-          "F15"
+          "F15",
+          "F70"
         ]
       },
       "source": "wiki",
@@ -429,7 +461,8 @@ window.APP_DATA = {
       "img": "assets/chars/Ayla.png",
       "fav": {
         "love": [
-          "F56"
+          "F56",
+          "F87"
         ],
         "like": [
           "F10",
@@ -438,7 +471,8 @@ window.APP_DATA = {
         "hate": [
           "F12",
           "F22",
-          "F69"
+          "F69",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -459,11 +493,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F27",
-          "F26"
+          "F26",
+          "F86"
         ],
         "hate": [
           "F10",
-          "F18"
+          "F18",
+          "F74",
+          "F79"
         ]
       },
       "source": "wiki",
@@ -482,11 +519,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F11",
-          "F28"
+          "F28",
+          "F72"
         ],
         "hate": [
           "F9",
-          "F18"
+          "F18",
+          "F74",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -507,11 +547,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F11",
-          "F3"
+          "F3",
+          "F82"
         ],
         "hate": [
           "F25",
-          "F12"
+          "F12",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -532,11 +574,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F8",
-          "F6"
+          "F6",
+          "F78"
         ],
         "hate": [
           "F4",
-          "F13"
+          "F13",
+          "F73"
         ]
       },
       "source": "wiki",
@@ -564,11 +608,14 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F72"
         ],
         "hate": [
           "F9",
-          "F18"
+          "F18",
+          "F74",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -593,7 +640,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F9",
-          "F30"
+          "F30",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -614,12 +662,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F18",
-          "F21"
+          "F21",
+          "F74"
         ],
         "hate": [
           "F14",
           "F12",
-          "F69"
+          "F69",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -636,16 +686,19 @@ window.APP_DATA = {
       "img": "assets/chars/Velvet.png",
       "fav": {
         "love": [
-          "F50"
+          "F50",
+          "F80"
         ],
         "like": [
           "F25",
-          "F14"
+          "F14",
+          "F81"
         ],
         "hate": [
           "F29",
           "F1",
-          "F68"
+          "F68",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -662,7 +715,8 @@ window.APP_DATA = {
       "img": "assets/chars/KommySwim.png",
       "fav": {
         "love": [
-          "F40"
+          "F40",
+          "F76"
         ],
         "like": [
           "F5",
@@ -670,11 +724,13 @@ window.APP_DATA = {
           "F31",
           "F33",
           "F35",
-          "F32"
+          "F32",
+          "F73"
         ],
         "hate": [
           "F28",
-          "F8"
+          "F8",
+          "F72"
         ]
       },
       "source": "wiki",
@@ -722,7 +778,8 @@ window.APP_DATA = {
       "img": "assets/chars/Elena.png",
       "fav": {
         "love": [
-          "F55"
+          "F55",
+          "F84"
         ],
         "like": [
           "F12",
@@ -738,7 +795,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F11",
-          "F26"
+          "F26",
+          "F86"
         ]
       },
       "source": "wiki",
@@ -759,11 +817,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F23",
-          "F27"
+          "F27",
+          "F71"
         ],
         "hate": [
           "F7",
-          "F8"
+          "F8",
+          "F89"
         ]
       },
       "source": "wiki",
@@ -780,7 +840,8 @@ window.APP_DATA = {
       "img": "assets/chars/Picora.png",
       "fav": {
         "love": [
-          "F52"
+          "F52",
+          "F83"
         ],
         "like": [
           "F24",
@@ -791,7 +852,8 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F84"
         ],
         "hate": [
           "F1",
@@ -829,7 +891,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F25",
-          "F30"
+          "F30",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -850,11 +913,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F13",
-          "F14"
+          "F14",
+          "F80"
         ],
         "hate": [
           "F28",
-          "F29"
+          "F29",
+          "F72",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -871,11 +937,13 @@ window.APP_DATA = {
       "img": "assets/chars/Sylla.png",
       "fav": {
         "love": [
-          "F51"
+          "F51",
+          "F77"
         ],
         "like": [
           "F20",
-          "F15"
+          "F15",
+          "F70"
         ],
         "hate": [
           "F19",
@@ -897,14 +965,17 @@ window.APP_DATA = {
       "img": "assets/chars/Guin.png",
       "fav": {
         "love": [
-          "F54"
+          "F54",
+          "F86"
         ],
         "like": [
           "F27",
           "F26"
         ],
         "hate": [
-          "F5"
+          "F5",
+          "F71",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -930,7 +1001,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F63",
-          "F14"
+          "F14",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -947,19 +1019,22 @@ window.APP_DATA = {
       "img": "assets/chars/Ricota.png",
       "fav": {
         "love": [
-          "F54"
+          "F54",
+          "F86"
         ],
         "like": [
           "F26",
           "F14",
           "F32",
           "F31",
-          "F33"
+          "F33",
+          "F80"
         ],
         "hate": [
           "F5",
           "F12",
-          "F69"
+          "F69",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -980,7 +1055,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F2",
-          "F20"
+          "F20",
+          "F77"
         ],
         "hate": [
           "X133373",
@@ -1002,15 +1078,19 @@ window.APP_DATA = {
       "img": "assets/chars/BeniBeni.png",
       "fav": {
         "love": [
-          "F42"
+          "F42",
+          "F70"
         ],
         "like": [
           "F15",
-          "F26"
+          "F26",
+          "F86"
         ],
         "hate": [
           "F9",
-          "F23"
+          "F23",
+          "F71",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -1027,7 +1107,8 @@ window.APP_DATA = {
       "img": "assets/chars/Inkle.png",
       "fav": {
         "love": [
-          "F45"
+          "F45",
+          "F72"
         ],
         "like": [
           "F28",
@@ -1035,7 +1116,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F9",
-          "F21"
+          "F21",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -1052,15 +1134,19 @@ window.APP_DATA = {
       "img": "assets/chars/Aragnia.png",
       "fav": {
         "love": [
-          "F58"
+          "F58",
+          "F85"
         ],
         "like": [
           "F22",
-          "F7"
+          "F7",
+          "F89"
         ],
         "hate": [
           "F9",
-          "F18"
+          "F18",
+          "F74",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -1077,16 +1163,19 @@ window.APP_DATA = {
       "img": "assets/chars/nike.png",
       "fav": {
         "love": [
-          "F39"
+          "F39",
+          "F73"
         ],
         "like": [
           "F3",
-          "F4"
+          "F4",
+          "F82"
         ],
         "hate": [
           "F16",
           "F12",
-          "F69"
+          "F69",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -1103,7 +1192,8 @@ window.APP_DATA = {
       "img": "assets/chars/Silvia_Happy_1.png",
       "fav": {
         "love": [
-          "F49"
+          "F49",
+          "F79"
         ],
         "like": [
           "F10",
@@ -1111,7 +1201,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F8",
-          "F5"
+          "F5",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -1136,7 +1227,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F5",
-          "F18"
+          "F18",
+          "F74",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -1153,7 +1246,8 @@ window.APP_DATA = {
       "img": "assets/chars/Renewa.png",
       "fav": {
         "love": [
-          "F49"
+          "F49",
+          "F79"
         ],
         "like": [
           "F10",
@@ -1165,11 +1259,13 @@ window.APP_DATA = {
           "F33",
           "F37",
           "F32",
-          "F69"
+          "F69",
+          "F75"
         ],
         "hate": [
           "F4",
-          "F11"
+          "F11",
+          "F73"
         ]
       },
       "source": "wiki",
@@ -1186,7 +1282,8 @@ window.APP_DATA = {
       "img": "assets/chars/Chloe.png",
       "fav": {
         "love": [
-          "F48"
+          "F48",
+          "F78"
         ],
         "like": [
           "F10",
@@ -1197,11 +1294,14 @@ window.APP_DATA = {
           "F31",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F79"
         ],
         "hate": [
           "F20",
-          "F23"
+          "F23",
+          "F71",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -1218,7 +1318,8 @@ window.APP_DATA = {
       "img": "assets/chars/Leets.png",
       "fav": {
         "love": [
-          "F44"
+          "F44",
+          "F71"
         ],
         "like": [
           "F23",
@@ -1228,11 +1329,13 @@ window.APP_DATA = {
           "F31",
           "F34",
           "F35",
-          "F36"
+          "F36",
+          "F77"
         ],
         "hate": [
           "F21",
-          "F15"
+          "F15",
+          "F70"
         ]
       },
       "source": "wiki",
@@ -1259,11 +1362,14 @@ window.APP_DATA = {
           "F31",
           "F34",
           "F35",
-          "F36"
+          "F36",
+          "F85"
         ],
         "hate": [
           "F5",
-          "F17"
+          "F17",
+          "F76",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -1280,7 +1386,8 @@ window.APP_DATA = {
       "img": "assets/chars/Ner.png",
       "fav": {
         "love": [
-          "F46"
+          "F46",
+          "F75"
         ],
         "like": [
           "F29",
@@ -1288,7 +1395,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F4",
-          "F16"
+          "F16",
+          "F73",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -1305,7 +1414,8 @@ window.APP_DATA = {
       "img": "assets/chars/Alice.png",
       "fav": {
         "love": [
-          "F49"
+          "F49",
+          "F79"
         ],
         "like": [
           "F10",
@@ -1320,7 +1430,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F9",
-          "F16"
+          "F16",
+          "F84",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -1343,11 +1455,13 @@ window.APP_DATA = {
           "F6",
           "F8",
           "F31",
-          "F32"
+          "F32",
+          "F78"
         ],
         "hate": [
           "F13",
-          "F4"
+          "F4",
+          "F73"
         ]
       },
       "source": "wiki",
@@ -1368,11 +1482,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F9",
-          "F13"
+          "F13",
+          "F84"
         ],
         "hate": [
           "F18",
-          "F27"
+          "F27",
+          "F74"
         ]
       },
       "source": "wiki",
@@ -1398,7 +1514,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F20",
-          "F27"
+          "F27",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -1415,7 +1532,8 @@ window.APP_DATA = {
       "img": "assets/chars/Rollett.png",
       "fav": {
         "love": [
-          "F47"
+          "F47",
+          "F82"
         ],
         "like": [
           "F13",
@@ -1423,7 +1541,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F11",
-          "F24"
+          "F24",
+          "F83"
         ]
       },
       "source": "wiki",
@@ -1442,11 +1561,13 @@ window.APP_DATA = {
         "love": [],
         "like": [
           "F23",
-          "F11"
+          "F11",
+          "F71"
         ],
         "hate": [
           "F5",
-          "F21"
+          "F21",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -1472,7 +1593,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F11",
-          "F3"
+          "F3",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -1489,7 +1611,8 @@ window.APP_DATA = {
       "img": "assets/chars/RimChaos.png",
       "fav": {
         "love": [
-          "F57"
+          "F57",
+          "F88"
         ],
         "like": [
           "F11",
@@ -1498,7 +1621,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F3",
-          "F29"
+          "F29",
+          "F75",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -1515,7 +1640,8 @@ window.APP_DATA = {
       "img": "assets/chars/Neti.png",
       "fav": {
         "love": [
-          "F44"
+          "F44",
+          "F71"
         ],
         "like": [
           "F21",
@@ -1523,7 +1649,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F5",
-          "F20"
+          "F20",
+          "F76",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -1546,7 +1674,10 @@ window.APP_DATA = {
           "F21",
           "F4"
         ],
-        "hate": []
+        "hate": [
+          "F76",
+          "F84"
+        ]
       },
       "source": "wiki",
       "personality": "frenzy"
@@ -1566,7 +1697,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F21",
-          "F6"
+          "F6",
+          "F78"
         ],
         "hate": [
           "F12",
@@ -1592,11 +1724,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F21",
-          "F10"
+          "F10",
+          "F79"
         ],
         "hate": [
           "F23",
-          "F5"
+          "F5",
+          "F71",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -1617,11 +1752,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F30",
-          "F10"
+          "F10",
+          "F79"
         ],
         "hate": [
           "F9",
-          "F27"
+          "F27",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -1638,7 +1775,8 @@ window.APP_DATA = {
       "img": "assets/chars/spy.png",
       "fav": {
         "love": [
-          "F52"
+          "F52",
+          "F83"
         ],
         "like": [
           "F24",
@@ -1646,7 +1784,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F6",
-          "F25"
+          "F25",
+          "F78",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -1667,7 +1807,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F24",
-          "F2"
+          "F2",
+          "F83"
         ],
         "hate": [
           "F20",
@@ -1693,7 +1834,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F17",
-          "F19"
+          "F19",
+          "F88"
         ],
         "hate": [
           "F6",
@@ -1714,7 +1856,8 @@ window.APP_DATA = {
       "img": "assets/chars/Epica.png",
       "fav": {
         "love": [
-          "F4"
+          "F4",
+          "F73"
         ],
         "like": [
           "F4",
@@ -1722,7 +1865,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F5",
-          "F6"
+          "F6",
+          "F76",
+          "F78"
         ]
       },
       "source": "wiki",
@@ -1739,7 +1884,8 @@ window.APP_DATA = {
       "img": "assets/chars/Ui.png",
       "fav": {
         "love": [
-          "F56"
+          "F56",
+          "F87"
         ],
         "like": [
           "F32",
@@ -1749,7 +1895,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F9",
-          "F17"
+          "F17",
+          "F84",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -1766,7 +1914,8 @@ window.APP_DATA = {
       "img": "assets/chars/Ner2.5.png",
       "fav": {
         "love": [
-          "F46"
+          "F46",
+          "F75"
         ],
         "like": [
           "F29",
@@ -1774,7 +1923,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F4",
-          "F16"
+          "F16",
+          "F73",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -1806,7 +1957,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F5",
-          "F18"
+          "F18",
+          "F74",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -1831,7 +1984,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F10",
-          "F29"
+          "F29",
+          "F75",
+          "F79"
         ]
       },
       "source": "wiki",
@@ -1848,7 +2003,8 @@ window.APP_DATA = {
       "img": "assets/chars/Rude.png",
       "fav": {
         "love": [
-          "F59"
+          "F59",
+          "F89"
         ],
         "like": [
           "F12",
@@ -1857,7 +2013,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F14",
-          "F30"
+          "F30",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -1874,7 +2031,8 @@ window.APP_DATA = {
       "img": "assets/chars/Rufo.png",
       "fav": {
         "love": [
-          "F54"
+          "F54",
+          "F86"
         ],
         "like": [
           "F32",
@@ -1883,7 +2041,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F15",
-          "F17"
+          "F17",
+          "F70",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -1915,7 +2075,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F16",
-          "F17"
+          "F17",
+          "F87",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -1932,7 +2094,8 @@ window.APP_DATA = {
       "img": "assets/chars/Momo.png",
       "fav": {
         "love": [
-          "F15"
+          "F15",
+          "F70"
         ],
         "like": [
           "F20",
@@ -1943,11 +2106,14 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F77"
         ],
         "hate": [
           "F18",
-          "F3"
+          "F3",
+          "F74",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -1964,17 +2130,20 @@ window.APP_DATA = {
       "img": "assets/chars/Butter.png",
       "fav": {
         "love": [
-          "F4"
+          "F4",
+          "F73"
         ],
         "like": [
           "F4",
           "F5",
           "F32",
-          "F31"
+          "F31",
+          "F76"
         ],
         "hate": [
           "F2",
-          "F29"
+          "F29",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -2001,7 +2170,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F10",
-          "F25"
+          "F25",
+          "F79",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -2018,15 +2189,19 @@ window.APP_DATA = {
       "img": "assets/chars/SpeakiMaid.png",
       "fav": {
         "love": [
-          "F43"
+          "F43",
+          "F74"
         ],
         "like": [
           "F22",
-          "F18"
+          "F18",
+          "F85"
         ],
         "hate": [
           "F17",
-          "F6"
+          "F6",
+          "F78",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -2047,11 +2222,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F5",
-          "F8"
+          "F8",
+          "F76"
         ],
         "hate": [
           "F2",
-          "F14"
+          "F14",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -2072,12 +2249,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F11",
-          "F3"
+          "F3",
+          "F82"
         ],
         "hate": [
           "F10",
           "F12",
-          "F69"
+          "F69",
+          "F79"
         ]
       },
       "source": "wiki",
@@ -2094,15 +2273,19 @@ window.APP_DATA = {
       "img": "assets/chars/Makasha.png",
       "fav": {
         "love": [
-          "F59"
+          "F59",
+          "F89"
         ],
         "like": [
           "F7",
-          "F9"
+          "F9",
+          "F84"
         ],
         "hate": [
           "F25",
-          "F29"
+          "F29",
+          "F75",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -2122,11 +2305,13 @@ window.APP_DATA = {
           "F65"
         ],
         "like": [
-          "F27"
+          "F27",
+          "F70"
         ],
         "hate": [
           "F19",
-          "F17"
+          "F17",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -2147,11 +2332,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F19",
-          "F22"
+          "F22",
+          "F85"
         ],
         "hate": [
           "F5",
-          "F17"
+          "F17",
+          "F76",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -2168,15 +2356,19 @@ window.APP_DATA = {
       "img": "assets/chars/LeviBiYe.png",
       "fav": {
         "love": [
-          "F39"
+          "F39",
+          "F73"
         ],
         "like": [
           "F4",
-          "F28"
+          "F28",
+          "F72"
         ],
         "hate": [
           "F25",
-          "F3"
+          "F3",
+          "F81",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -2193,15 +2385,18 @@ window.APP_DATA = {
       "img": "assets/chars/Ashur3.png",
       "fav": {
         "love": [
-          "F45"
+          "F45",
+          "F72"
         ],
         "like": [
           "F28",
-          "F4"
+          "F4",
+          "F73"
         ],
         "hate": [
           "F22",
-          "F13"
+          "F13",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -2218,16 +2413,19 @@ window.APP_DATA = {
       "img": "assets/chars/Yomi.png",
       "fav": {
         "love": [
-          "F57"
+          "F57",
+          "F88"
         ],
         "like": [
           "F17",
-          "F14"
+          "F14",
+          "F80"
         ],
         "hate": [
           "F3",
           "F1",
-          "F68"
+          "F68",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -2244,7 +2442,8 @@ window.APP_DATA = {
       "img": "assets/chars/Joanne.png",
       "fav": {
         "love": [
-          "F59"
+          "F59",
+          "F89"
         ],
         "like": [
           "F27",
@@ -2253,7 +2452,8 @@ window.APP_DATA = {
         "hate": [
           "F1",
           "F29",
-          "F68"
+          "F68",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -2285,7 +2485,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F5",
-          "F21"
+          "F21",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -2302,16 +2503,19 @@ window.APP_DATA = {
       "img": "assets/chars/Kommy.png",
       "fav": {
         "love": [
-          "F40"
+          "F40",
+          "F76"
         ],
         "like": [
           "F4",
           "F5",
-          "F32"
+          "F32",
+          "F73"
         ],
         "hate": [
           "F28",
-          "F8"
+          "F8",
+          "F72"
         ]
       },
       "source": "wiki",
@@ -2328,16 +2532,20 @@ window.APP_DATA = {
       "img": "assets/chars/Kidian.png",
       "fav": {
         "love": [
-          "F48"
+          "F48",
+          "F78"
         ],
         "like": [
           "F5",
           "F6",
-          "F32"
+          "F32",
+          "F76"
         ],
         "hate": [
           "F24",
-          "F7"
+          "F7",
+          "F83",
+          "F89"
         ]
       },
       "source": "wiki",
@@ -2358,11 +2566,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F30",
-          "F7"
+          "F7",
+          "F89"
         ],
         "hate": [
           "F11",
-          "F28"
+          "F28",
+          "F72"
         ]
       },
       "source": "wiki",
@@ -2379,7 +2589,8 @@ window.APP_DATA = {
       "img": "assets/chars/Rim.png",
       "fav": {
         "love": [
-          "F57"
+          "F57",
+          "F88"
         ],
         "like": [
           "F11",
@@ -2389,7 +2600,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F3",
-          "F29"
+          "F29",
+          "F75",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -2406,7 +2619,8 @@ window.APP_DATA = {
       "img": "assets/chars/Blanchet.png",
       "fav": {
         "love": [
-          "F49"
+          "F49",
+          "F79"
         ],
         "like": [
           "F21",
@@ -2422,7 +2636,8 @@ window.APP_DATA = {
         "hate": [
           "F20",
           "F12",
-          "F69"
+          "F69",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -2439,7 +2654,8 @@ window.APP_DATA = {
       "img": "assets/chars/Hilde.png",
       "fav": {
         "love": [
-          "F54"
+          "F54",
+          "F86"
         ],
         "like": [
           "F26",
@@ -2448,7 +2664,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F29",
-          "F23"
+          "F23",
+          "F71",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -2465,7 +2683,8 @@ window.APP_DATA = {
       "img": "assets/chars/Posher.png",
       "fav": {
         "love": [
-          "F53"
+          "F53",
+          "F81"
         ],
         "like": [
           "F12",
@@ -2475,7 +2694,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F26",
-          "F17"
+          "F17",
+          "F86",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -2492,15 +2713,18 @@ window.APP_DATA = {
       "img": "assets/chars/Ashur.png",
       "fav": {
         "love": [
-          "F45"
+          "F45",
+          "F72"
         ],
         "like": [
           "F4",
-          "F28"
+          "F28",
+          "F73"
         ],
         "hate": [
           "F22",
-          "F13"
+          "F13",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -2517,7 +2741,8 @@ window.APP_DATA = {
       "img": "assets/chars/Risty.png",
       "fav": {
         "love": [
-          "F58"
+          "F58",
+          "F85"
         ],
         "like": [
           "F22",
@@ -2528,11 +2753,13 @@ window.APP_DATA = {
           "F35",
           "F36",
           "F37",
-          "F9"
+          "F9",
+          "F84"
         ],
         "hate": [
           "F13",
-          "F7"
+          "F7",
+          "F86"
         ]
       },
       "source": "wiki",
@@ -2553,7 +2780,8 @@ window.APP_DATA = {
         ],
         "like": [
           "F26",
-          "F8"
+          "F8",
+          "F86"
         ],
         "hate": [
           "F11",
@@ -2575,7 +2803,8 @@ window.APP_DATA = {
       "img": "assets/chars/Shasha.png",
       "fav": {
         "love": [
-          "F48"
+          "F48",
+          "F78"
         ],
         "like": [
           "F1",
@@ -2584,7 +2813,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F16",
-          "F18"
+          "F18",
+          "F74",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -2601,15 +2832,18 @@ window.APP_DATA = {
       "img": "assets/chars/Orr.png",
       "fav": {
         "love": [
-          "F55"
+          "F55",
+          "F84"
         ],
         "like": [
           "F9",
-          "F20"
+          "F20",
+          "F77"
         ],
         "hate": [
           "F2",
-          "F3"
+          "F3",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -2626,7 +2860,8 @@ window.APP_DATA = {
       "img": "assets/chars/RohneMayor.png",
       "fav": {
         "love": [
-          "F52"
+          "F52",
+          "F83"
         ],
         "like": [
           "F24",
@@ -2635,7 +2870,8 @@ window.APP_DATA = {
         "hate": [
           "F20",
           "F12",
-          "F69"
+          "F69",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -2652,16 +2888,19 @@ window.APP_DATA = {
       "img": "assets/chars/Asana.png",
       "fav": {
         "love": [
-          "F50"
+          "F50",
+          "F80"
         ],
         "like": [
           "F14",
-          "F25"
+          "F25",
+          "F81"
         ],
         "hate": [
           "F1",
           "F29",
-          "F68"
+          "F68",
+          "F75"
         ]
       },
       "source": "wiki",
@@ -2687,7 +2926,8 @@ window.APP_DATA = {
         "hate": [
           "F25",
           "F12",
-          "F69"
+          "F69",
+          "F81"
         ]
       },
       "source": "wiki",
@@ -2704,15 +2944,19 @@ window.APP_DATA = {
       "img": "assets/chars/qisha.png",
       "fav": {
         "love": [
-          "F58"
+          "F58",
+          "F85"
         ],
         "like": [
           "F24",
-          "F22"
+          "F22",
+          "F83"
         ],
         "hate": [
           "F25",
-          "F7"
+          "F7",
+          "F81",
+          "F89"
         ]
       },
       "source": "wiki",
@@ -2729,16 +2973,19 @@ window.APP_DATA = {
       "img": "assets/chars/aurora.png",
       "fav": {
         "love": [
-          "F49"
+          "F49",
+          "F79"
         ],
         "like": [
           "F10",
-          "F3"
+          "F3",
+          "F82"
         ],
         "hate": [
           "F12",
           "F16",
-          "F69"
+          "F69",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -2755,7 +3002,8 @@ window.APP_DATA = {
       "img": "assets/chars/BigWood.png",
       "fav": {
         "love": [
-          "F53"
+          "F53",
+          "F81"
         ],
         "like": [
           "F30",
@@ -2769,7 +3017,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F14",
-          "F22"
+          "F22",
+          "F80",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -2786,7 +3036,8 @@ window.APP_DATA = {
       "img": "assets/chars/Rohne.png",
       "fav": {
         "love": [
-          "F52"
+          "F52",
+          "F83"
         ],
         "like": [
           "F24",
@@ -2795,7 +3046,8 @@ window.APP_DATA = {
         "hate": [
           "F20",
           "F12",
-          "F69"
+          "F69",
+          "F77"
         ]
       },
       "source": "wiki",
@@ -2812,7 +3064,8 @@ window.APP_DATA = {
       "img": "assets/chars/Gabia.png",
       "fav": {
         "love": [
-          "F43"
+          "F43",
+          "F74"
         ],
         "like": [
           "F10",
@@ -2822,7 +3075,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F3",
-          "F23"
+          "F23",
+          "F71",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -2844,11 +3099,13 @@ window.APP_DATA = {
         ],
         "like": [
           "F12",
-          "F5"
+          "F5",
+          "F76"
         ],
         "hate": [
           "F14",
-          "F8"
+          "F8",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -2865,15 +3122,19 @@ window.APP_DATA = {
       "img": "assets/chars/Speaki.png",
       "fav": {
         "love": [
-          "F43"
+          "F43",
+          "F74"
         ],
         "like": [
           "F18",
-          "F22"
+          "F22",
+          "F85"
         ],
         "hate": [
           "F6",
-          "F17"
+          "F17",
+          "F78",
+          "F88"
         ]
       },
       "source": "wiki",
@@ -2890,15 +3151,19 @@ window.APP_DATA = {
       "img": "assets/chars/Lethe.png",
       "fav": {
         "love": [
-          "F44"
+          "F44",
+          "F71"
         ],
         "like": [
           "F20",
-          "F23"
+          "F23",
+          "F77"
         ],
         "hate": [
           "F25",
-          "F16"
+          "F16",
+          "F81",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -2926,11 +3191,14 @@ window.APP_DATA = {
           "F34",
           "F35",
           "F36",
-          "F37"
+          "F37",
+          "F72"
         ],
         "hate": [
           "F15",
-          "F4"
+          "F4",
+          "F70",
+          "F73"
         ]
       },
       "source": "wiki",
@@ -2950,11 +3218,14 @@ window.APP_DATA = {
         "like": [
           "F1",
           "F5",
-          "F68"
+          "F68",
+          "F76"
         ],
         "hate": [
           "F10",
-          "F20"
+          "F20",
+          "F77",
+          "F79"
         ]
       },
       "source": "wiki",
@@ -2971,7 +3242,8 @@ window.APP_DATA = {
       "img": "assets/chars/MaestroMK2.png",
       "fav": {
         "love": [
-          "F58"
+          "F58",
+          "F85"
         ],
         "like": [
           "F22",
@@ -2979,7 +3251,8 @@ window.APP_DATA = {
         ],
         "hate": [
           "F7",
-          "F19"
+          "F19",
+          "F89"
         ]
       },
       "source": "wiki",
@@ -2996,15 +3269,22 @@ window.APP_DATA = {
       "img": "assets/chars/Ifrit.png",
       "fav": {
         "love": [
-          "F47"
+          "F47",
+          "F82",
+          "F89"
         ],
         "like": [
           "F3",
-          "F23"
+          "F23",
+          "F71",
+          "F78"
         ],
         "hate": [
           "F9",
-          "F2"
+          "F2",
+          "F72",
+          "F73",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -3029,7 +3309,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F23",
-          "F6"
+          "F6",
+          "F71",
+          "F78"
         ]
       },
       "source": "wiki",
@@ -3046,15 +3328,19 @@ window.APP_DATA = {
       "img": "assets/chars/Beni.png",
       "fav": {
         "love": [
-          "F42"
+          "F42",
+          "F70"
         ],
         "like": [
           "F15",
-          "F26"
+          "F26",
+          "F86"
         ],
         "hate": [
           "F9",
-          "F23"
+          "F23",
+          "F71",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -3071,15 +3357,19 @@ window.APP_DATA = {
       "img": "assets/chars/Marie.png",
       "fav": {
         "love": [
-          "F45"
+          "F45",
+          "F72"
         ],
         "like": [
           "F28",
-          "F3"
+          "F3",
+          "F82"
         ],
         "hate": [
           "F18",
-          "F22"
+          "F22",
+          "F74",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -3096,15 +3386,18 @@ window.APP_DATA = {
       "img": "assets/chars/Jubee.png",
       "fav": {
         "love": [
-          "F42"
+          "F42",
+          "F70"
         ],
         "like": [
           "F15",
-          "F29"
+          "F29",
+          "F75"
         ],
         "hate": [
           "F14",
-          "F8"
+          "F8",
+          "F80"
         ]
       },
       "source": "wiki",
@@ -3126,11 +3419,14 @@ window.APP_DATA = {
         ],
         "like": [
           "F28",
-          "F1"
+          "F1",
+          "F72"
         ],
         "hate": [
           "F22",
-          "F10"
+          "F10",
+          "F79",
+          "F85"
         ]
       },
       "source": "wiki",
@@ -3147,7 +3443,8 @@ window.APP_DATA = {
       "img": "assets/chars/Festa.png",
       "fav": {
         "love": [
-          "F51"
+          "F51",
+          "F77"
         ],
         "like": [
           "F20",
@@ -3156,7 +3453,8 @@ window.APP_DATA = {
         "hate": [
           "F5",
           "F12",
-          "F69"
+          "F69",
+          "F76"
         ]
       },
       "source": "wiki",
@@ -3173,15 +3471,19 @@ window.APP_DATA = {
       "img": "assets/chars/Levi.png",
       "fav": {
         "love": [
-          "F39"
+          "F39",
+          "F73"
         ],
         "like": [
           "F4",
-          "F28"
+          "F28",
+          "F72"
         ],
         "hate": [
           "F25",
-          "F3"
+          "F3",
+          "F81",
+          "F82"
         ]
       },
       "source": "wiki",
@@ -3198,7 +3500,8 @@ window.APP_DATA = {
       "img": "assets/chars/Silphir.png",
       "fav": {
         "love": [
-          "F52"
+          "F52",
+          "F83"
         ],
         "like": [
           "F24",
@@ -3206,7 +3509,9 @@ window.APP_DATA = {
         ],
         "hate": [
           "F16",
-          "F25"
+          "F25",
+          "F81",
+          "F87"
         ]
       },
       "source": "wiki",
@@ -3223,15 +3528,19 @@ window.APP_DATA = {
       "img": "assets/chars/Barie.png",
       "fav": {
         "love": [
-          "F46"
+          "F46",
+          "F75"
         ],
         "like": [
           "F29",
-          "F28"
+          "F28",
+          "F72"
         ],
         "hate": [
           "F23",
-          "F9"
+          "F9",
+          "F71",
+          "F84"
         ]
       },
       "source": "wiki",
@@ -3249,18 +3558,22 @@ window.APP_DATA = {
       "fav": {
         "love": [
           "F12",
-          "F69"
+          "F69",
+          "F73"
         ],
         "like": [
           "F41",
           "F18",
-          "F43"
+          "F43",
+          "F74"
         ],
         "hate": [
           "F5",
           "F40",
           "F7",
-          "F59"
+          "F59",
+          "F76",
+          "F88"
         ]
       },
       "source": "manual",
@@ -3277,15 +3590,19 @@ window.APP_DATA = {
       "img": "assets/chars/Sari.png",
       "fav": {
         "love": [
-          "F54"
+          "F54",
+          "F86"
         ],
         "like": [
           "F26",
-          "F3"
+          "F3",
+          "F82"
         ],
         "hate": [
           "F7",
-          "F15"
+          "F15",
+          "F70",
+          "F89"
         ]
       },
       "source": "table",
@@ -3302,7 +3619,8 @@ window.APP_DATA = {
       "img": "assets/chars/Cuee.png",
       "fav": {
         "love": [
-          "F50"
+          "F50",
+          "F80"
         ],
         "like": [
           "F14",
@@ -3314,7 +3632,9 @@ window.APP_DATA = {
           "F28",
           "F45",
           "F3",
-          "F47"
+          "F47",
+          "F72",
+          "F82"
         ]
       },
       "source": "manual",
@@ -3344,7 +3664,8 @@ window.APP_DATA = {
           "F41",
           "F5",
           "F40",
-          "F69"
+          "F69",
+          "F76"
         ]
       },
       "source": "manual",
@@ -3361,18 +3682,21 @@ window.APP_DATA = {
       "img": "assets/chars/Lazy.png",
       "fav": {
         "love": [
-          "F40"
+          "F40",
+          "F76"
         ],
         "like": [
           "F5",
           "F9",
-          "F55"
+          "F55",
+          "F84"
         ],
         "hate": [
           "F6",
           "F48",
           "F11",
-          "F61"
+          "F61",
+          "F78"
         ]
       },
       "source": "manual",
@@ -3389,18 +3713,22 @@ window.APP_DATA = {
       "img": "assets/chars/Maison.png",
       "fav": {
         "love": [
-          "F40"
+          "F40",
+          "F76"
         ],
         "like": [
           "F5",
           "F7",
-          "F59"
+          "F59",
+          "F87"
         ],
         "hate": [
           "F9",
           "F55",
           "F24",
-          "F52"
+          "F52",
+          "F83",
+          "F84"
         ]
       },
       "source": "manual",
@@ -3417,7 +3745,8 @@ window.APP_DATA = {
       "img": "assets/chars/Yumimi.png",
       "fav": {
         "love": [
-          "F50"
+          "F50",
+          "F80"
         ],
         "like": [
           "F14",
@@ -3429,7 +3758,9 @@ window.APP_DATA = {
           "F22",
           "F58",
           "F9",
-          "F55"
+          "F55",
+          "F84",
+          "F85"
         ]
       },
       "source": "manual",
@@ -3446,18 +3777,22 @@ window.APP_DATA = {
       "img": "assets/chars/Mynx.png",
       "fav": {
         "love": [
-          "F40"
+          "F40",
+          "F76"
         ],
         "like": [
           "F5",
           "F14",
-          "F50"
+          "F50",
+          "F80"
         ],
         "hate": [
           "F22",
           "F58",
           "F28",
-          "F45"
+          "F45",
+          "F72",
+          "F85"
         ]
       },
       "source": "manual",
@@ -3474,7 +3809,8 @@ window.APP_DATA = {
       "img": "assets/chars/Carren.png",
       "fav": {
         "love": [
-          "F45"
+          "F45",
+          "F72"
         ],
         "like": [
           "F28",
@@ -3486,7 +3822,8 @@ window.APP_DATA = {
           "F18",
           "F43",
           "F27",
-          "F65"
+          "F65",
+          "F74"
         ]
       },
       "source": "manual",
@@ -3503,18 +3840,22 @@ window.APP_DATA = {
       "img": "assets/chars/Taida.png",
       "fav": {
         "love": [
-          "F55"
+          "F55",
+          "F84"
         ],
         "like": [
           "F9",
           "F24",
-          "F52"
+          "F52",
+          "F83"
         ],
         "hate": [
           "F14",
           "F50",
           "F25",
-          "F53"
+          "F53",
+          "F80",
+          "F81"
         ]
       },
       "source": "manual",
@@ -3536,14 +3877,16 @@ window.APP_DATA = {
         "like": [
           "F19",
           "F4",
-          "F39"
+          "F39",
+          "F73"
         ],
         "hate": [
           "F8",
           "F66",
           "F12",
           "F41",
-          "F69"
+          "F69",
+          "F77"
         ]
       },
       "source": "manual",
@@ -3565,7 +3908,8 @@ window.APP_DATA = {
         "like": [
           "F8",
           "F5",
-          "F40"
+          "F40",
+          "F76"
         ],
         "hate": [
           "F19",
@@ -4069,6 +4413,146 @@ window.APP_DATA = {
       "img": "assets/foods/F69.png",
       "aliases": [],
       "upgrade_of": "F41"
+    },
+    {
+      "id": "F70",
+      "name": "哼唧蜂蜜罐",
+      "img": "assets/foods/F70.png",
+      "aliases": [],
+      "upgrade_of": "F42"
+    },
+    {
+      "id": "F71",
+      "name": "龙敢糖果",
+      "img": "assets/foods/F71.png",
+      "aliases": [],
+      "upgrade_of": "F44"
+    },
+    {
+      "id": "F72",
+      "name": "UFC全炸福套餐",
+      "img": "assets/foods/F72.png",
+      "aliases": [],
+      "upgrade_of": "F45"
+    },
+    {
+      "id": "F73",
+      "name": "啪啪！焦糖爆米花",
+      "img": "assets/foods/F73.png",
+      "aliases": [],
+      "upgrade_of": "F39"
+    },
+    {
+      "id": "F74",
+      "name": "红参味健康糖果",
+      "img": "assets/foods/F74.png",
+      "aliases": [],
+      "upgrade_of": "F43"
+    },
+    {
+      "id": "F75",
+      "name": "胖嘟嘟棉花糖马卡龙",
+      "img": "assets/foods/F75.png",
+      "aliases": [],
+      "upgrade_of": "F46"
+    },
+    {
+      "id": "F76",
+      "name": "VIP罐头饲料",
+      "img": "assets/foods/F76.png",
+      "aliases": [],
+      "upgrade_of": "F40"
+    },
+    {
+      "id": "F77",
+      "name": "油炸氮气",
+      "img": "assets/foods/F77.png",
+      "aliases": [],
+      "upgrade_of": "F51"
+    },
+    {
+      "id": "F78",
+      "name": "三层麻花面包",
+      "img": "assets/foods/F78.png",
+      "aliases": [],
+      "upgrade_of": "F48"
+    },
+    {
+      "id": "F79",
+      "name": "苏打气泡柠檬茶",
+      "img": "assets/foods/F79.png",
+      "aliases": [],
+      "upgrade_of": "F49"
+    },
+    {
+      "id": "F80",
+      "name": "三口菜包菜",
+      "img": "assets/foods/F80.png",
+      "aliases": [],
+      "upgrade_of": "F50"
+    },
+    {
+      "id": "F81",
+      "name": "鲜嫩椰果绿汁",
+      "img": "assets/foods/F81.png",
+      "aliases": [],
+      "upgrade_of": "F53"
+    },
+    {
+      "id": "F82",
+      "name": "咸口奶油焦糖布蕾",
+      "img": "assets/foods/F82.png",
+      "aliases": [],
+      "upgrade_of": "F47"
+    },
+    {
+      "id": "F83",
+      "name": "宝石糖葫芦",
+      "img": "assets/foods/F83.png",
+      "aliases": [],
+      "upgrade_of": "F52"
+    },
+    {
+      "id": "F84",
+      "name": "好烫好冷美式咖啡",
+      "img": "assets/foods/F84.png",
+      "aliases": [],
+      "upgrade_of": "F55"
+    },
+    {
+      "id": "F85",
+      "name": "石榴石刨冰",
+      "img": "assets/foods/F85.png",
+      "aliases": [],
+      "upgrade_of": "F58"
+    },
+    {
+      "id": "F86",
+      "name": "特制蜂蜜大蒜三文鱼",
+      "img": "assets/foods/F86.png",
+      "aliases": [],
+      "upgrade_of": "F54"
+    },
+    {
+      "id": "F87",
+      "name": "海草便当",
+      "img": "assets/foods/F87.png",
+      "aliases": [],
+      "upgrade_of": "F16"
+    },
+    {
+      "id": "F88",
+      "name": "南瓜粥",
+      "img": "assets/foods/F88.png",
+      "aliases": [],
+      "upgrade_of": "F57"
+    },
+    {
+      "id": "F89",
+      "name": "冰块充满五谷粉汁",
+      "img": "assets/foods/F89.png",
+      "aliases": [],
+      "upgrade_of": "F59"
     }
   ],
   "personalities": [
