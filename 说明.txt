@@ -1,0 +1,29 @@
+网页版：https://www.tuotuolianfood.icu/
+蓝奏云下载：
+电脑端：https://kejiaixinyue.lanzn.com/iYoEh48us0ij
+安卓端：https://kejiaixinyue.lanzn.com/iKGVf48urxpi
+
+github：https://github.com/xhyxin/tuotuolianfood
+在github右边的双端下载，网页版中都支持github下载，已全部开源在github仓库
+
+作者：
+无月
+
+食物来源：https://lsbim.github.io/foods/
+美化参考：月轉叁冰空響花 https://journey.927927927.xyz/#/
+
+本作由wiki出品，仅作公益分享，禁止商用。
+转载请完整保留本声明，禁止盈利性传播。
+
+
+游戏游玩需知：
+1.该版本为作者无月，wiki组出品
+2.该游戏原版数据版权属于epid,双端软件，网站版权归无月所有,转载需标出出处，禁止不标明出处，禁止用于盈利性用途
+3.本作允许传播，二创，不进行二创限制，但是需要标出原作作者无月
+4..有bug请在邮箱或者b站相关视频下评论反馈，wiki网址https://www.gamekee.com/tr/下评论反馈，群信息太多我可能看不到
+5.除了网页版的访问以及电脑，安卓双端的检查更新功能，其他功能无需联网，离线也可查询坨坨喜欢的食物
+6.在除了软件本身的更新外，新增坨坨，新增食物无数更新双端，仅需点击检查更新，即可更新数据
+7.所以一般更新重点将会是网页端，因为封装打包下载频繁，教主们下载后第一时间以及后续使用感觉数据不对建议点击一下检查更新
+8.安卓端报错是正常的，没有病毒，开源文件在github可见。因为无月No money上架，继续安装即可
+
+代码贡献者：glm5.3flash
