@@ -11,6 +11,19 @@
   font-weight: 100 900;
   font-display: swap;
 }
+/* 韩/日 UI 字体（子集化，只含界面文案用字），语言切换时按 body[data-lang] 启用 */
+@font-face {
+  font-family: "BoBoKo";
+  src: url("../assets/fonts/boboko-subset.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "BoBoJa";
+  src: url("../assets/fonts/boboja-subset.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}
 
 :root {
   /* 背景与文字 */
@@ -46,6 +59,20 @@
      小字（别名/计数/提示条等）用 --font-text（系统字体）保证小字号清晰 */
   --font-ui: "BoBoHei", "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
   --font-text: "Microsoft YaHei", "PingFang SC", system-ui, sans-serif;
+}
+/* 语言切换：韩/日改用各自的可爱字体（子集），并配系统兜底保证未覆盖字符可读
+   （data-lang 的值是语言 id：zh-CN / ko-KR / ja-JP / en） */
+body[data-lang="ko-KR"] {
+  --font-ui: "BoBoKo", "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-text: "Malgun Gothic", "Apple SD Gothic Neo", system-ui, sans-serif;
+}
+body[data-lang="ja-JP"] {
+  --font-ui: "BoBoJa", "Yu Gothic", "Hiragino Sans", system-ui, sans-serif;
+  --font-text: "Yu Gothic", "Hiragino Sans", system-ui, sans-serif;
+}
+body[data-lang="en"] {
+  --font-ui: "BoBoHei", "Segoe UI", system-ui, sans-serif;
+  --font-text: "Segoe UI", system-ui, sans-serif;
 }
 
 * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
@@ -188,6 +215,32 @@ body::before {
 #btnAbout:active { transform: scale(.95); }
 #btnAbout .sm { display: none; } /* 窄屏只显示「关于」 */
 
+/* ---------- 语言切换（三端通用） ---------- */
+#btnLang {
+  display: inline-flex; align-items: center; gap: 4px;
+  border: 1.5px solid var(--line-strong); background: var(--surface-strong); color: var(--ink);
+  padding: 7px 13px; border-radius: 999px; font-size: 13.5px; cursor: pointer;
+  font-family: inherit; letter-spacing: 1px; white-space: nowrap;
+  transition: transform .15s ease, border-color .15s ease, color .15s ease;
+}
+#btnLang:hover { border-color: var(--accent); color: var(--accent-strong); transform: translateY(-2px); }
+#btnLang:active { transform: scale(.95); }
+.lang-list { display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
+.lang-opt {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 10px 16px; border-radius: 13px; cursor: pointer;
+  border: 1.5px dashed var(--line-strong); background: var(--surface-soft);
+  font-family: inherit; font-size: 14.5px; letter-spacing: 1px; color: var(--ink); text-align: left;
+  transition: transform .15s ease, border-color .15s ease, background .15s ease, color .15s ease;
+}
+.lang-opt:hover { border-color: var(--accent); transform: translateY(-1px); }
+.lang-opt:active { transform: scale(.97); }
+.lang-opt.active {
+  border-style: solid; border-color: var(--accent);
+  background: var(--accent-soft); color: var(--accent-strong); font-weight: bold;
+}
+.lang-opt .ck { font-size: 14px; color: var(--accent-strong); }
+
 .ab-row {
   display: flex; align-items: center; gap: 10px;
   background: var(--surface-soft); border: 1.5px dashed var(--line);
@@ -291,8 +344,8 @@ body::before {
 }
 .card .pic { position: relative; width: 80px; height: 80px; margin: 0 auto; }
 .card .pic img { width: 100%; height: 100%; object-fit: contain; filter: drop-shadow(0 2px 3px rgba(83, 132, 115, .18)); }
-.card .nm { font-size: 14px; margin-top: 6px; line-height: 1.3; word-break: break-all; }
-.card .alias { font-size: 11px; color: var(--sub); margin-top: 2px; word-break: break-all; font-family: var(--font-text); }
+.card .nm { font-size: 14px; margin-top: 6px; line-height: 1.3; word-break: break-word; overflow-wrap: anywhere; }
+.card .alias { font-size: 11px; color: var(--sub); margin-top: 2px; word-break: break-word; overflow-wrap: anywhere; font-family: var(--font-text); }
 .card .badge {
   position: absolute; width: 26px; height: 26px; object-fit: contain;
   filter: drop-shadow(0 1px 2px rgba(38, 58, 49, .3)); pointer-events: none;
@@ -357,7 +410,7 @@ body::before {
   .logo { animation: none; }
   .card:hover, .card:hover .pic, .persona-chip:hover { animation: none; transform: none; }
   .dl-card { animation: none; }
-  .dl-btn:hover, #btnDownload:hover, #btnUpdate:hover, .dl-close:hover { transform: none; }
+  .dl-btn:hover, #btnDownload:hover, #btnUpdate:hover, .dl-close:hover, #btnAbout:hover, #btnLang:hover, .lang-opt:hover { transform: none; }
 }
 
 /* ---------- 窄屏 ---------- */
@@ -374,6 +427,9 @@ body::before {
   #btnAbout { white-space: nowrap; padding: 7px 12px; font-size: 12.5px; flex: 0 0 auto; }
   #btnAbout .lg { display: none; }
   #btnAbout .sm { display: inline; }
+  #btnLang { padding: 7px 9px; font-size: 12.5px; flex: 0 0 auto; }
+  #btnLang #langName { display: none; } /* 窄屏只留 🌐 图标 */
+  .lang-opt { padding: 11px 15px; font-size: 14px; }
   #hintBar { margin: 8px 12px 0; padding: 6px 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12.5px; }
   #personaBar {
     flex-wrap: nowrap; overflow-x: auto; padding: 8px 12px 0;

@@ -1,5 +1,5 @@
 window.APP_DATA = {
-  "version": "2.1",
+  "version": "2.5",
   "updatedAt": "2026-09-17",
   "attitude": {
     "like": "assets/ui/like.png",
@@ -78,7 +78,6 @@ window.APP_DATA = {
         ],
         "like": [
           "F18",
-          "F9",
           "F32",
           "F33",
           "F31",
@@ -1671,8 +1670,7 @@ window.APP_DATA = {
           "F4"
         ],
         "like": [
-          "F21",
-          "F4"
+          "F21"
         ],
         "hate": [
           "F76",
@@ -1860,7 +1858,6 @@ window.APP_DATA = {
           "F73"
         ],
         "like": [
-          "F4",
           "F8"
         ],
         "hate": [
@@ -2099,7 +2096,6 @@ window.APP_DATA = {
         ],
         "like": [
           "F20",
-          "F15",
           "F32",
           "F33",
           "F31",
@@ -2134,7 +2130,6 @@ window.APP_DATA = {
           "F73"
         ],
         "like": [
-          "F4",
           "F5",
           "F32",
           "F31",

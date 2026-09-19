@@ -2,10 +2,12 @@
  *
  * 交互：默认对应模式（点角色筛食物、点食物筛角色）；
  * 任一面板顶部搜索即进入搜索：本侧显示名字/别名匹配项，对侧显示关联项（带态度角标）。
+ * 多语言：文案统一走 I18N.t()（见 js/i18n.js），语言切换后通过 I18N.onChange 全量重渲染。
  */
 (function () {
   "use strict";
   var D = window.APP_DATA;
+  var T = window.I18N.t;
   var $ = function (id) { return document.getElementById(id); };
 
   // ---------- 索引 ----------
@@ -35,16 +37,49 @@
     });
   }
 
+  // ---------- 名称翻译（译名表见 js/names.js） ----------
+  var LATIN_RE = /^[A-Za-z0-9][A-Za-z0-9 ()./'+!-]*$/;
+  function namesTable(lang) {
+    return (window.I18N_NAMES && window.I18N_NAMES[lang]) || null;
+  }
+  function charName(c) {
+    var lang = window.I18N.getLang();
+    var tb = namesTable(lang);
+    if (tb && tb.chars && tb.chars[c.id]) return tb.chars[c.id];
+    // 英语模式：角色名自动取别名里第一个纯英文名（data.js 的 aliases）
+    if (lang === "en" && c.aliases && c.aliases.length) {
+      for (var i = 0; i < c.aliases.length; i++) {
+        var a = c.aliases[i] || "";
+        if (LATIN_RE.test(a)) return a.trim();
+      }
+    }
+    return c.name;
+  }
+  function foodName(f) {
+    var lang = window.I18N.getLang();
+    var tb = namesTable(lang);
+    if (tb && tb.foods && tb.foods[f.id]) return tb.foods[f.id];
+    return f.name;
+  }
+
   var charAtt = {}, foodRels = {};
   D.characters.forEach(function (c) {
     var m = {};
     ["love", "like", "hate"].forEach(function (att) {
       (c.fav[att] || []).forEach(function (fid) {
+        // 同一角色同一食物可能被录进两个态度数组（历史脏数据）：
+        // 只保留最强的态度（超喜欢 > 喜欢 > 讨厌），避免重复卡片/角标覆盖
         if (!m[fid] || ATT_ORDER[att] < ATT_ORDER[m[fid]]) m[fid] = att;
-        (foodRels[fid] = foodRels[fid] || []).push({ charId: c.id, att: att });
       });
     });
     charAtt[c.id] = m;
+  });
+  // 反向索引从去重后的 charAtt 构建：一个食物 → 相关角色（每角色一条、态度取最强）
+  D.characters.forEach(function (c) {
+    var m = charAtt[c.id];
+    Object.keys(m).forEach(function (fid) {
+      (foodRels[fid] = foodRels[fid] || []).push({ charId: c.id, att: m[fid] });
+    });
   });
 
   // ---------- 状态 ----------
@@ -60,7 +95,7 @@
     if (!att) return "";
     // badge-like / badge-love / badge-hate：样式里给不同态度的角标配对应色柔光
     return '<img class="badge b-' + pos + " badge-" + att + '" src="' + D.attitude[att] + '" title="' +
-      ({ love: "超喜欢", like: "喜欢", hate: "讨厌" })[att] + '">';
+      T("att." + att) + '">';
   }
 
   function esc(s) {
@@ -74,11 +109,19 @@
     var cls = "card";
     if (opts.selected) cls += " selected";
     if (opts.dimmed) cls += " dimmed";
-    var alias = (c.aliases && c.aliases.length) ? '<div class="alias">' + c.aliases.slice(0, 2).join(" / ") + "</div>" : "";
+    // 主名 = 当前语言译名；译名不是中文名时，小字行显示原名便于对照
+    var nm = charName(c);
+    var sub;
+    if (nm !== c.name) {
+      sub = esc(c.name);
+    } else {
+      sub = (c.aliases && c.aliases.length) ? esc(c.aliases.slice(0, 2).join(" / ")) : "";
+    }
+    var alias = sub ? '<div class="alias">' + sub + "</div>" : "";
     return '<div class="' + cls + '" data-type="char" data-id="' + esc(c.id) + '" title="' +
-      esc(c.name + (c.aliases.length ? "（" + c.aliases.join("、") + "）" : "")) + '">' +
+      esc(nm + (c.aliases.length ? "（" + c.aliases.join("、") + "）" : "")) + '">' +
       '<div class="pic"><img loading="lazy" src="' + (c.img || "") + '" onerror="this.style.opacity=.15"></div>' +
-      '<div class="nm">' + esc(c.name) + "</div>" + alias +
+      '<div class="nm">' + esc(nm) + "</div>" + alias +
       badge(opts.badge, "char") +
       "</div>";
   }
@@ -88,10 +131,13 @@
     var cls = "card";
     if (opts.selected) cls += " selected";
     if (opts.dimmed) cls += " dimmed";
+    var nm = foodName(f);
+    var sub = nm !== f.name ? esc(f.name) : "";
+    var alias = sub ? '<div class="alias">' + sub + "</div>" : "";
     return '<div class="' + cls + '" data-type="food" data-id="' + esc(f.id) + '" title="' +
-      esc(f.name + (f.upgrade_of && foodById[f.upgrade_of] ? "（升级自：" + foodById[f.upgrade_of].name + "）" : "")) + '">' +
+      esc(nm + (f.upgrade_of && foodById[f.upgrade_of] ? "（升级自：" + foodName(foodById[f.upgrade_of]) + "）" : "")) + '">' +
       '<div class="pic"><img loading="lazy" src="' + f.img + '" onerror="this.style.opacity=.15"></div>' +
-      '<div class="nm">' + esc(f.name) + "</div>" +
+      '<div class="nm">' + esc(nm) + "</div>" + alias +
       badge(opts.badge, "food") +
       "</div>";
   }
@@ -100,6 +146,12 @@
     if (!a) return b;
     if (!b) return a;
     return ATT_ORDER[a] <= ATT_ORDER[b] ? a : b;
+  }
+
+  // 性格显示名：优先用 i18n 词典，词典没有再用 data.js 里的中文名
+  function personaName(p) {
+    var key = "persona." + p.id;
+    return window.I18N.has(key) ? T(key) : p.name;
   }
 
   function render() {
@@ -131,9 +183,9 @@
       leftList = D.characters.filter(function (c) { return charOpts[c.id]; });
       rightList = D.foods.filter(function (f) { return foodOpts[f.id]; });
       var parts = [];
-      if (cq) parts.push("角色「" + esc(state.cq) + "」" + mc.length + " 个");
-      if (fq) parts.push("食物「" + esc(state.fq) + "」" + mf.length + " 个");
-      hint = "搜索：" + parts.join("，") + "（含别名；关联项带态度角标）。清空搜索框恢复对应模式。";
+      if (cq) parts.push(T("hint.search.chars", { q: esc(state.cq), n: mc.length }));
+      if (fq) parts.push(T("hint.search.foods", { q: esc(state.fq), n: mf.length }));
+      hint = T("hint.search", { parts: parts.join("，") });
     } else if (state.sel && state.sel.type === "char") {
       var c = charById[state.sel.id];
       var m = charAtt[c.id] || {};
@@ -144,8 +196,8 @@
         .sort(function (a, b) { return ATT_ORDER[m[a.id]] - ATT_ORDER[m[b.id]]; });
       rightList.forEach(function (f) { foodOpts[f.id] = { badge: m[f.id] }; });
       hint = Object.keys(m).length
-        ? "已选角色：<b>" + esc(c.name) + "</b>，右侧仅显示 TA 相关的食物（右上角为态度）。点击食物可反查。"
-        : "已选角色：<b>" + esc(c.name) + "</b>（暂无喜好数据，可在「数据/关系.txt」中补充后重新构建）";
+        ? T("hint.char.sel", { name: esc(charName(c)) })
+        : T("hint.char.nodata", { name: esc(charName(c)) });
     } else if (state.sel && state.sel.type === "food") {
       var f = foodById[state.sel.id];
       var rels = (foodRels[f.id] || []).slice()
@@ -155,19 +207,28 @@
       foodOpts[f.id] = { selected: true };
       D.foods.forEach(function (o) { if (o.id !== f.id) foodOpts[o.id] = foodOpts[o.id] || { dimmed: true }; });
       rightList = D.foods;
-      hint = "已选食物：<b>" + esc(f.name) + "</b>，左侧仅显示与它相关的角色（左上角为态度）。" +
-        (f.upgrade_of && foodById[f.upgrade_of] ? "（升级自：" + esc(foodById[f.upgrade_of].name) + "）" : "");
+      // 态度数量一目了然（有些食物在数据里本来就只有少数角色有关系）
+      var stats = { love: 0, like: 0, hate: 0 };
+      rels.forEach(function (r) { stats[r.att]++; });
+      hint = T("hint.food.sel", { name: esc(foodName(f)) }) +
+        (f.upgrade_of && foodById[f.upgrade_of]
+          ? T("hint.food.upgrade", { name: esc(foodName(foodById[f.upgrade_of])) })
+          : "") + T("hint.food.stats", stats);
     } else {
       leftList = D.characters;
       rightList = D.foods;
-      hint = "点击角色查看 TA 喜欢/讨厌的食物；点击食物查看哪些角色喜欢/讨厌它；也可直接在上方搜索。";
+      hint = T("hint.default");
     }
 
     if (state.persona) {
       var pname = "";
-      (D.personalities || []).forEach(function (p) { if (p.id === state.persona) pname = p.name; });
+      (D.personalities || []).forEach(function (p) { if (p.id === state.persona) pname = personaName(p); });
+      var leftBefore = leftList.length;
       leftList = leftList.filter(function (c) { return c.personality === state.persona; });
-      if (pname) hint = "已按性格「<b>" + esc(pname) + "</b>」筛选角色。" + hint;
+      if (pname) hint = T("hint.persona", { name: esc(pname) }) + hint;
+      // 性格筛选把部分相关角色藏掉了 → 明确提醒，避免被当成"数据不全"
+      var hiddenN = leftBefore - leftList.length;
+      if (hiddenN > 0) hint += T("hint.persona.hidden", { n: hiddenN });
     }
 
     var charHtml = [], foodHtml = [];
@@ -175,8 +236,8 @@
     rightList.forEach(function (f) { foodHtml.push(foodCard(f, foodOpts[f.id] || {})); });
     $("charGrid").innerHTML = charHtml.join("");
     $("foodGrid").innerHTML = foodHtml.join("");
-    $("charCount").textContent = leftList.length + " 个";
-    $("foodCount").textContent = rightList.length + " 个";
+    $("charCount").textContent = T("count.unit", { n: leftList.length });
+    $("foodCount").textContent = T("count.unit", { n: rightList.length });
     $("charEmpty").classList.toggle("hidden", leftList.length > 0);
     $("foodEmpty").classList.toggle("hidden", rightList.length > 0);
     $("hintText").innerHTML = hint;
@@ -216,12 +277,12 @@
   function renderPersonaBar() {
     var bar = $("personaBar");
     if (!D.personalities || !D.personalities.length) { bar.classList.add("hidden"); return; }
-    var html = ['<span class="p-label">性格</span>'];
+    var html = ['<span class="p-label">' + T("persona.label") + "</span>"];
     D.personalities.forEach(function (p) {
       var n = D.characters.filter(function (c) { return c.personality === p.id; }).length;
       html.push('<button class="persona-chip' + (state.persona === p.id ? " active" : "") +
-        '" data-id="' + esc(p.id) + '" title="按性格「' + esc(p.name) + '」筛选角色">' +
-        '<img src="' + p.icon + '" alt="">' + esc(p.name) + ' <span class="n">' + n + "</span></button>");
+        '" data-id="' + esc(p.id) + '" title="' + T("hint.persona", { name: personaName(p) }).replace(/<[^>]*>/g, "") + '">' +
+        '<img src="' + p.icon + '" alt="">' + esc(personaName(p)) + ' <span class="n">' + n + "</span></button>");
     });
     bar.innerHTML = html.join("");
   }
@@ -240,54 +301,14 @@
   });
   renderPersonaBar();
 
-  // ---------- 更新 ----------
-  $("btnUpdate").addEventListener("click", function () {
-    var btn = $("btnUpdate");
-    btn.disabled = true;
-    btn.textContent = "检查中…";
-    var done = function (msg) {
-      btn.disabled = false;
-      btn.textContent = "检查更新";
-      toast(msg);
-    };
-    var p = null;
-    try {
-      p = window.Updater && window.Updater.checkUpdate();
-    } catch (err) { p = null; }
-    Promise.resolve(p && typeof p.then === "function" ? p : null)
-      .then(function (res) {
-        res = res || {};
-        if (res.supported === false) { done(res.message || "当前打开方式不支持在线更新。"); return; }
-        if (res.updated && res.updated.length) {
-          btn.disabled = false;
-          btn.textContent = "检查更新";
-          toast("更新完成：已更新到 " + res.updated.join("、") + "，页面正在刷新加载新数据…");
-          setTimeout(function () { location.reload(); }, 1800);
-          return;
-        }
-        done(res.message || "已是最新版本。");
-      })
-      .catch(function (err) {
-        var msg = err && err.message || String(err);
-        if (location.protocol === "file:") {
-          msg = "当前是直接双击打开的网页，浏览器不允许联网更新。请关闭后使用「打开查询器.bat」打开。";
-        } else {
-          msg = "更新失败：" + msg;
-        }
-        done(msg);
-      });
-  });
-
-  var toastTimer = null;
-  function toast(msg) {
-    var t = $("toast");
-    t.textContent = msg;
-    t.classList.remove("hidden");
-    clearTimeout(toastTimer);
-    toastTimer = setTimeout(function () { t.classList.add("hidden"); }, 5200);
+  // ---------- 版本号 ----------
+  function updateVersionLine(ver) {
+    $("versionInfo").textContent = T("version.line", {
+      v: ver, date: D.updatedAt,
+      chars: D.characters.length, foods: D.foods.length
+    });
   }
-
-  $("versionInfo").textContent = "v" + D.version + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
+  updateVersionLine(D.version);
   // 版本号显示：网页版以服务器根目录的 版本号校对.txt 为准（在 GitHub 上改 txt，F5 即生效）；
   // exe / APK 没有这个文件，显示 data.js 里的版本（检查更新后会自动对齐 txt）。
   if (location.protocol === "http:" || location.protocol === "https:") {
@@ -295,25 +316,12 @@
       .then(function (r) { return r.ok ? r.text() : null; })
       .then(function (t) {
         t = (t || "").trim().replace(/^[vV]/, "");
-        if (t && /^\d+(\.\d+){0,3}$/.test(t)) {
-          $("versionInfo").textContent = "v" + t + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
-        }
+        if (t && /^\d+(\.\d+){0,3}$/.test(t)) updateVersionLine(t);
       })
       .catch(function () {});
   }
 
-  // ---------- init ----------
-  $("versionInfo").textContent = "v" + D.version + " · 数据更新于 " + D.updatedAt + " · 角色 " + D.characters.length + " · 食物 " + D.foods.length;
-  // 托管到外网时没有本地更新服务（/api/update 只在 exe 里），
-  // 网页版数据随站点更新，隐藏「检查更新」按钮；file:// 和本机 127.0.0.1 不受影响。
-  // APK 壳（appassets.androidplatform.net）注入了 NativeBridge，同样保留按钮。
-  var host = location.hostname;
-  var isLocal = location.protocol === "file:" ||
-    host === "127.0.0.1" || host === "localhost" || host === "::1" || host === "[::1]" ||
-    host === "appassets.androidplatform.net";
-  if (!isLocal) $("btnUpdate").style.display = "none";
-
-  // ---------- 弹窗（客户端下载 / 关于作者） ----------
+  // ---------- 弹窗（客户端下载 / 关于作者 / 语言切换） ----------
   function bindModal(btnId, modalId, closeId) {
     var modal = $(modalId);
     var close = function () { modal.classList.add("hidden"); };
@@ -331,12 +339,14 @@
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape") close();
     });
+    return close;
   }
+
   // 关于作者：三端都显示（内容在 index.html 的 #aboutModal 里）
   bindModal("btnAbout", "aboutModal", "btnAboutClose");
   $("btnCopyMail").addEventListener("click", function () {
     var mail = $("aboutMail").textContent.trim();
-    var ok = function () { toast("邮箱已复制：" + mail); };
+    var ok = function () { toast(T("toast.mail.copied", { mail: mail })); };
     var fallback = function () { // 老 WebView / 非安全上下文没有 clipboard API
       var ta = document.createElement("textarea");
       ta.value = mail;
@@ -344,7 +354,7 @@
       document.body.appendChild(ta);
       ta.select();
       try { document.execCommand("copy"); ok(); }
-      catch (err) { toast("复制失败，手动记一下：" + mail); }
+      catch (err) { toast(T("toast.mail.fail", { mail: mail })); }
       document.body.removeChild(ta);
     };
     if (navigator.clipboard && navigator.clipboard.writeText) {
@@ -353,6 +363,93 @@
       fallback();
     }
   });
+
+  // 语言切换：三端都显示；选择后 I18N.setLang 广播，onLangChange 统一重渲染
+  var closeLangModal = bindModal("btnLang", "langModal", "btnLangClose");
+  function renderLangList() {
+    var cur = window.I18N.getLang();
+    var html = window.I18N.langs.map(function (l) {
+      return '<button class="lang-opt' + (l.id === cur ? " active" : "") +
+        '" data-id="' + esc(l.id) + '"><span>' + esc(l.name) + "</span>" +
+        (l.id === cur ? '<span class="ck">✓</span>' : "") + "</button>";
+    });
+    $("langList").innerHTML = html.join("");
+    $("langModalSub").textContent = "";
+  }
+  $("btnLang").addEventListener("click", renderLangList);
+  $("langList").addEventListener("click", function (e) {
+    var opt = e.target.closest(".lang-opt");
+    if (!opt) return;
+    window.I18N.setLang(opt.getAttribute("data-id"));
+    closeLangModal();
+  });
+
+  // 语言变化：重画所有动态文案（静态文案由 I18N.applyStatic 处理）
+  window.I18N.onChange(function () {
+    renderPersonaBar();
+    render();
+    updateVersionLine(D.version);
+    if (!$("btnUpdate").disabled) $("btnUpdate").textContent = T("btn.update");
+  });
+
+  // ---------- 更新 ----------
+  $("btnUpdate").addEventListener("click", function () {
+    var btn = $("btnUpdate");
+    btn.disabled = true;
+    btn.textContent = T("btn.update.checking");
+    var done = function (msg) {
+      btn.disabled = false;
+      btn.textContent = T("btn.update");
+      toast(msg);
+    };
+    var p = null;
+    try {
+      p = window.Updater && window.Updater.checkUpdate();
+    } catch (err) { p = null; }
+    Promise.resolve(p && typeof p.then === "function" ? p : null)
+      .then(function (res) {
+        res = res || {};
+        if (res.supported === false) { done(res.message || T("toast.update.notsupport")); return; }
+        if (res.updated && res.updated.length) {
+          btn.disabled = false;
+          btn.textContent = T("btn.update");
+          toast(T("toast.update.done", { v: res.updated.join("、") }));
+          setTimeout(function () { location.reload(); }, 1800);
+          return;
+        }
+        // exe 本地服务返回的 message 是中文文案，翻译不了的按原文显示
+        done(res.message || T("toast.update.latest"));
+      })
+      .catch(function (err) {
+        var msg = err && err.message || String(err);
+        if (location.protocol === "file:") {
+          msg = T("toast.update.filehint");
+        } else {
+          msg = T("toast.update.fail", { msg: msg });
+        }
+        done(msg);
+      });
+  });
+
+  var toastTimer = null;
+  function toast(msg) {
+    var t = $("toast");
+    t.textContent = msg;
+    t.classList.remove("hidden");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { t.classList.add("hidden"); }, 5200);
+  }
+
+  // ---------- init ----------
+  // 托管到外网时没有本地更新服务（/api/update 只在 exe 里），
+  // 网页版数据随站点更新，隐藏「检查更新」按钮；file:// 和本机 127.0.0.1 不受影响。
+  // APK 壳（appassets.androidplatform.net）注入了 NativeBridge，同样保留按钮。
+  var host = location.hostname;
+  var isLocal = location.protocol === "file:" ||
+    host === "127.0.0.1" || host === "localhost" || host === "::1" || host === "[::1]" ||
+    host === "appassets.androidplatform.net";
+  if (!isLocal) $("btnUpdate").style.display = "none";
+
   // 客户端下载：和「检查更新」相反，只在网页托管版显示
   // （exe / APK 本身就是客户端，file:// 双击打开也不显示）。
   // 下载地址配置在 index.html 的 #dlModal 里（GitHub 直链 + 蓝奏云分享页）。

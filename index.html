@@ -6,21 +6,22 @@
 <title>坨坨脸 · 角色食物图鉴</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
 <link rel="preload" href="assets/fonts/bobosubset.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.1-6aabdc53">
+<link rel="stylesheet" href="css/style.css?v=2.5-6aad59cb">
 </head>
 <body>
 <header id="topbar">
   <div class="brand">
     <span class="logo">🍰</span>
     <div class="titles">
-      <h1>坨坨脸 · 角色食物图鉴</h1>
+      <h1 data-i18n="app.title">坨坨脸 · 角色食物图鉴</h1>
       <span class="sub" id="versionInfo"></span>
     </div>
   </div>
   <div class="toolbar">
-    <button id="btnDownload" title="下载电脑/安卓客户端">客户端下载</button>
-    <button id="btnUpdate" title="检查并下载新角色数据">检查更新</button>
-    <button id="btnAbout" title="关于作者 / 反馈方式"><span class="lg">关于作者</span><span class="sm">关于</span></button>
+    <button id="btnLang" data-i18n-title="btn.lang.title" title="语言 / Language">🌐 <span id="langName">中文</span></button>
+    <button id="btnDownload" data-i18n="btn.download" title="下载电脑/安卓客户端">客户端下载</button>
+    <button id="btnUpdate" data-i18n="btn.update" data-i18n-title="btn.update" title="检查并下载新角色数据">检查更新</button>
+    <button id="btnAbout" data-i18n-title="btn.about.lg" title="关于作者 / 反馈方式"><span class="lg" data-i18n="btn.about.lg">关于作者</span><span class="sm" data-i18n="btn.about.sm">关于</span></button>
   </div>
 </header>
 
@@ -31,21 +32,21 @@
 <main id="panels">
   <section class="panel" id="leftPanel">
     <div class="panel-head">
-      <h2>角色</h2><span class="count" id="charCount"></span>
-      <input id="charSearch" class="panel-search" type="text"
+      <h2 data-i18n="panel.chars">角色</h2><span class="count" id="charCount"></span>
+      <input id="charSearch" class="panel-search" type="text" data-i18n-placeholder="search.chars.ph"
              placeholder="搜索角色 / 别名…" autocomplete="off">
     </div>
     <div class="grid" id="charGrid"></div>
-    <div class="empty-msg hidden" id="charEmpty">没有匹配的角色</div>
+    <div class="empty-msg hidden" id="charEmpty" data-i18n="empty.chars">没有匹配的角色</div>
   </section>
   <section class="panel" id="rightPanel">
     <div class="panel-head">
-      <h2>食物</h2><span class="count" id="foodCount"></span>
-      <input id="foodSearch" class="panel-search" type="text"
+      <h2 data-i18n="panel.foods">食物</h2><span class="count" id="foodCount"></span>
+      <input id="foodSearch" class="panel-search" type="text" data-i18n-placeholder="search.foods.ph"
              placeholder="搜索食物 / 别名…" autocomplete="off">
     </div>
     <div class="grid" id="foodGrid"></div>
-    <div class="empty-msg hidden" id="foodEmpty">没有匹配的食物</div>
+    <div class="empty-msg hidden" id="foodEmpty" data-i18n="empty.foods">没有匹配的食物</div>
   </section>
 </main>
 
@@ -58,23 +59,23 @@
   <div class="dl-mask"></div>
   <div class="dl-card" role="dialog" aria-label="下载客户端">
     <button class="dl-close" id="btnDlClose" title="关闭">×</button>
-    <h3>📦 下载客户端</h3>
-    <p class="dl-sub">独立客户端不用开网页，离线也能查，还会自动提醒更新～</p>
+    <h3 data-i18n="dl.title">📦 下载客户端</h3>
+    <p class="dl-sub" data-i18n="dl.sub">独立客户端不用开网页，离线也能查，还会自动提醒更新～</p>
     <div class="dl-row">
-      <span class="dl-tag pc">💻 电脑端</span>
+      <span class="dl-tag pc" data-i18n="dl.tag.pc">💻 电脑端</span>
       <div class="dl-btns">
-        <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/pc.zip" target="_blank" rel="noopener">GitHub 下载</a>
-        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iYoEh48us0ij" target="_blank" rel="noopener">蓝奏云 下载</a>
+        <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/pc.zip" target="_blank" rel="noopener" data-i18n="dl.btn.gh">GitHub 下载</a>
+        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/isfse48c260d" target="_blank" rel="noopener" data-i18n="dl.btn.lz">蓝奏云 下载</a>
       </div>
     </div>
     <div class="dl-row">
-      <span class="dl-tag apk">📱 安卓端</span>
+      <span class="dl-tag apk" data-i18n="dl.tag.apk">📱 安卓端</span>
       <div class="dl-btns">
-        <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/apk.zip" target="_blank" rel="noopener">GitHub 下载</a>
-        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iKGVf48urxpi" target="_blank" rel="noopener">蓝奏云 下载</a>
+        <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/apk.zip" target="_blank" rel="noopener" data-i18n="dl.btn.gh">GitHub 下载</a>
+        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iUxfS48c2dte" target="_blank" rel="noopener" data-i18n="dl.btn.lz">蓝奏云 下载</a>
       </div>
     </div>
-    <p class="dl-note">GitHub 直链国内可能较慢，卡住就换蓝奏云（无需密码）。<br>
+    <p class="dl-note" data-i18n-html="dl.note">GitHub 直链国内可能较慢，卡住就换蓝奏云（无需密码）。<br>
       电脑端：解压后双击 exe；安卓端：解压出 apk 安装（允许未知来源）。</p>
   </div>
 </div>
@@ -84,29 +85,42 @@
   <div class="dl-mask"></div>
   <div class="dl-card" role="dialog" aria-label="关于作者">
     <button class="dl-close" id="btnAboutClose" title="关闭">×</button>
-    <h3>🍮 关于作者</h3>
-    <p class="dl-sub">坨坨脸食物图鉴 · 个人同人作品<br>数据整理自韩服 wiki，仅供交流学习，游戏版权归 Epid Games 所有。</p>
+    <h3 data-i18n="about.title">🍮 关于作者</h3>
+    <p class="dl-sub" data-i18n-html="about.sub">坨坨脸食物图鉴 · 个人同人作品<br>数据整理自韩服 wiki，仅供交流学习，游戏版权归 Epid Games 所有。</p>
     <div class="ab-row">
       <span class="ab-ico">🐙</span>
-      <div class="ab-info"><b>GitHub 仓库</b><span>xhyxin/tuotuolianfood</span></div>
-      <a class="dl-btn gh ab-act" href="https://github.com/xhyxin/tuotuolianfood" target="_blank" rel="noopener">打开</a>
+      <div class="ab-info"><b data-i18n="about.github">GitHub 仓库</b><span>xhyxin/tuotuolianfood</span></div>
+      <a class="dl-btn gh ab-act" href="https://github.com/xhyxin/tuotuolianfood" target="_blank" rel="noopener" data-i18n="about.open">打开</a>
     </div>
     <div class="ab-row">
       <span class="ab-ico">🌐</span>
-      <div class="ab-info"><b>网页版</b><span>www.tuotuolianfood.icu</span></div>
-      <a class="dl-btn lz ab-act" href="https://www.tuotuolianfood.icu/" target="_blank" rel="noopener">打开</a>
+      <div class="ab-info"><b data-i18n="about.web">网页版</b><span>www.tuotuolianfood.icu</span></div>
+      <a class="dl-btn lz ab-act" href="https://www.tuotuolianfood.icu/" target="_blank" rel="noopener" data-i18n="about.open">打开</a>
     </div>
     <div class="ab-row">
       <span class="ab-ico">✉️</span>
-      <div class="ab-info"><b>邮箱</b><span id="aboutMail">3161649035@qq.com</span></div>
-      <button class="dl-btn lz ab-act" id="btnCopyMail" type="button">复制</button>
+      <div class="ab-info"><b data-i18n="about.mail">邮箱</b><span id="aboutMail">3161649035@qq.com</span></div>
+      <button class="dl-btn lz ab-act" id="btnCopyMail" type="button" data-i18n="about.copy">复制</button>
     </div>
-    <p class="dl-note">发现数据错误、想补充角色，欢迎到 GitHub 提 issue 或发邮件告诉我～</p>
+    <p class="dl-note" data-i18n="about.note">发现数据错误、想补充角色，欢迎到 GitHub 提 issue 或发邮件告诉我～</p>
   </div>
 </div>
 
-<script src="js/data.js?v=2.1-6aabdc53"></script>
-<script src="js/updater.js?v=2.1-6aabdc53"></script>
-<script src="js/app.js?v=2.1-6aabdc53"></script>
+<!-- 语言切换弹窗：三端都显示；选项由 app.js 按 I18N.langs 渲染 -->
+<div id="langModal" class="hidden">
+  <div class="dl-mask"></div>
+  <div class="dl-card" role="dialog" aria-label="语言">
+    <button class="dl-close" id="btnLangClose" title="关闭">×</button>
+    <h3 data-i18n="lang.modal.title">🌐 切换语言</h3>
+    <p class="dl-sub" id="langModalSub"></p>
+    <div class="lang-list" id="langList"></div>
+  </div>
+</div>
+
+<script src="js/data.js?v=2.5-6aad59cb"></script>
+<script src="js/i18n.js?v=2.5-6aad59cb"></script>
+<script src="js/names.js?v=2.5-6aad59cb"></script>
+<script src="js/updater.js?v=2.5-6aad59cb"></script>
+<script src="js/app.js?v=2.5-6aad59cb"></script>
 </body>
 </html>
