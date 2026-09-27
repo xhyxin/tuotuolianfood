@@ -16,7 +16,6 @@
   window.I18N_NAMES = {
     "en": {
       "chars": {
-
       },
       "foods": {
         "F1": "Strawberry Cake",
@@ -233,11 +232,13 @@
         "Tig": "티그",
         "TigHero": "티그",
         "Ui": "우이",
+        "Ui(Memory)": "우이(기억)",
         "Uros": "우로스",
         "Vela": "벨라",
         "Velvet": "벨벳",
         "Veroo": "베루",
         "Vivi": "비비",
+        "Vivi(Duvune)": "비비(신성)",
         "Yumimi": "유미미",
         "eisia": "아이시아",
         "inkle": "잉클",
@@ -468,11 +469,13 @@
         "Tig": "ティグ",
         "TigHero": "ティグ",
         "Ui": "ウイ",
+        "Ui(Memory)": "ウイ",
         "Uros": "ウロス",
         "Vela": "ベラ",
         "Velvet": "ベルベット",
         "Veroo": "ベル",
         "Vivi": "ヴィヴィ",
+        "Vivi(Duvune)": "ヴィヴィ",
         "Yumimi": "ユミミ",
         "xXionx": "シオン",
         "yomi": "ヨミ",

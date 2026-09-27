@@ -1,5 +1,5 @@
 window.APP_DATA = {
-  "version": "2.6",
+  "version": "2.7",
   "updatedAt": "2026-09-25",
   "attitude": {
     "like": "assets/ui/like.png",
@@ -4824,7 +4824,15 @@ window.APP_DATA = {
           "F9",
           "F74",
           "F43",
-          "F18"
+          "F18",
+          "F31",
+          "F32",
+          "F33",
+          "F37",
+          "F34",
+          "F35",
+          "F36",
+          "F90"
         ],
         "hate": [
           "F5",
@@ -4856,7 +4864,15 @@ window.APP_DATA = {
         "like": [
           "F16",
           "F8",
-          "F66"
+          "F66",
+          "F31",
+          "F32",
+          "F33",
+          "F37",
+          "F34",
+          "F35",
+          "F36",
+          "F90"
         ],
         "hate": [
           "F84",

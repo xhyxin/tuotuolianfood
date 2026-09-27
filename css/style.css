@@ -11,16 +11,16 @@
   font-weight: 100 900;
   font-display: swap;
 }
-/* 韩/日 UI 字体（子集化，只含界面文案用字），语言切换时按 body[data-lang] 启用 */
+/* 韩/日 UI 字体（完整版，新增译名/别名也不会缺字），语言切换时按 body[data-lang] 启用 */
 @font-face {
   font-family: "BoBoKo";
-  src: url("../assets/fonts/boboko-subset.woff2") format("woff2");
+  src: url("../assets/fonts/boboko-full.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
   font-family: "BoBoJa";
-  src: url("../assets/fonts/boboja-subset.woff2") format("woff2");
+  src: url("../assets/fonts/boboja-full.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }

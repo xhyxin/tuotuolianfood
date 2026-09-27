@@ -19,13 +19,21 @@
   function norm(s) {
     return (s || "").toLowerCase().replace(/[\s（）()·・]/g, "");
   }
-  // 词条化：名字 / id / 别名 各自成词条，避免子串误匹配（如 RohneMayor 含 mayo）
-  D.characters.forEach(function (c) {
-    c._tokens = [c.name, c.id].concat(c.aliases || []).map(norm).filter(Boolean);
-  });
-  D.foods.forEach(function (f) {
-    f._tokens = [f.name].concat(f.aliases || []).map(norm).filter(Boolean);
-  });
+  // 词条化：名字 / id / 别名 / 当前语言译名 各自成词条，
+  // 避免子串误匹配（如 RohneMayor 含 mayo）；语言切换时重建以纳入译名
+  // ★首次调用放在下方名称函数定义之后（依赖 charName/foodName 与正则常量）
+  function buildTokens() {
+    D.characters.forEach(function (c) {
+      c._tokens = [c.name, c.id].concat(c.aliases || []).map(norm).filter(Boolean);
+      var nm = norm(charName(c));
+      if (nm && nm !== norm(c.name) && c._tokens.indexOf(nm) < 0) c._tokens.push(nm);
+    });
+    D.foods.forEach(function (f) {
+      f._tokens = [f.name].concat(f.aliases || []).map(norm).filter(Boolean);
+      var nm = norm(foodName(f));
+      if (nm && nm !== norm(f.name) && f._tokens.indexOf(nm) < 0) f._tokens.push(nm);
+    });
+  }
 
   function matchTokens(tokens, q) {
     // 纯英文/数字查询：词条「开头」匹配（防止 mayor 含 mayo 这种误伤）；
@@ -39,19 +47,33 @@
 
   // ---------- 名称翻译（译名表见 js/names.js） ----------
   var LATIN_RE = /^[A-Za-z0-9][A-Za-z0-9 ()./'+!-]*$/;
+  var HANGUL_RE = /[가-힣]/;   // 韩文别名检测（更新工具里加的韩文名走这里）
+  var KANA_RE = /[ァ-ヶー]/;   // 日文别名检测（片假名/长音）
   function namesTable(lang) {
     return (window.I18N_NAMES && window.I18N_NAMES[lang]) || null;
+  }
+  function aliasByScript(c, re) {
+    var list = c.aliases || [];
+    for (var i = 0; i < list.length; i++) {
+      if (list[i] && re.test(list[i])) return list[i].trim();
+    }
+    return null;
   }
   function charName(c) {
     var lang = window.I18N.getLang();
     var tb = namesTable(lang);
     if (tb && tb.chars && tb.chars[c.id]) return tb.chars[c.id];
-    // 英语模式：角色名自动取别名里第一个纯英文名（data.js 的 aliases）
-    if (lang === "en" && c.aliases && c.aliases.length) {
-      for (var i = 0; i < c.aliases.length; i++) {
-        var a = c.aliases[i] || "";
-        if (LATIN_RE.test(a)) return a.trim();
-      }
+    // 译名表没有时，从别名里找对应文字的名字（英语模式取英文名，
+    // 韩文模式取韩文别名，日文模式取日文别名——更新工具里加的别名直接生效）
+    if (lang === "en") {
+      var en = aliasByScript(c, LATIN_RE);
+      if (en) return en;
+    } else if (lang === "ko-KR") {
+      var ko = aliasByScript(c, HANGUL_RE);
+      if (ko) return ko;
+    } else if (lang === "ja-JP") {
+      var ja = aliasByScript(c, KANA_RE);
+      if (ja) return ja;
     }
     return c.name;
   }
@@ -59,8 +81,13 @@
     var lang = window.I18N.getLang();
     var tb = namesTable(lang);
     if (tb && tb.foods && tb.foods[f.id]) return tb.foods[f.id];
+    if (lang !== "zh-CN" && f.aliases && f.aliases.length) {
+      var a = aliasByScript(f, lang === "ko-KR" ? HANGUL_RE : lang === "ja-JP" ? KANA_RE : LATIN_RE);
+      if (a) return a;
+    }
     return f.name;
   }
+  buildTokens();
 
   var charAtt = {}, foodRels = {};
   D.characters.forEach(function (c) {
@@ -386,6 +413,7 @@
 
   // 语言变化：重画所有动态文案（静态文案由 I18N.applyStatic 处理）
   window.I18N.onChange(function () {
+    buildTokens(); // 搜索词条纳入当前语言的译名
     renderPersonaBar();
     render();
     updateVersionLine(D.version);
