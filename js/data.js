@@ -1,6 +1,6 @@
 window.APP_DATA = {
-  "version": "2.7",
-  "updatedAt": "2026-09-25",
+  "version": "2.8",
+  "updatedAt": "2026-10-03",
   "attitude": {
     "like": "assets/ui/like.png",
     "hate": "assets/ui/hate.png",
@@ -3977,8 +3977,7 @@ window.APP_DATA = {
       "fav": {
         "love": [
           "F47",
-          "F82",
-          "F89"
+          "F82"
         ],
         "like": [
           "F3",
