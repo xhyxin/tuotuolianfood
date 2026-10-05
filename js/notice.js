@@ -8,7 +8,7 @@
 //   · 每一路的所有候选源【同时】发出，谁先回用谁（旧版逐个试，慢源要等满 8 秒超时，
 //     点一次公告最坏要五六秒）
 //   · 托管网页（http/https）：候选里先加同源（部署内容 = 仓库内容，同源最快）
-//   · exe / APK / file://：直接走 GitHub 镜像链（gh-proxy → raw → jsDelivr）
+//   · exe / APK / file:// / 被墙网络：raw 直连失败自动落到 api.github.com（官方）
 //   · 拉到即写 localStorage（noticeCache / noticeVerCache），之后零等待
 //
 // 弹窗时机：
@@ -28,11 +28,10 @@
   var BRANCH = 'main';
   var NOTICE_FILE = encodeURIComponent('公告.txt');
   var VER_FILE = encodeURIComponent('版本号校对.txt');
-  var MIRRORS = [
-    'https://gh-proxy.com/https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/',
-    'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/',
-    'https://cdn.jsdelivr.net/gh/' + REPO + '@' + BRANCH + '/',
-  ];
+  /* 直连 GitHub 官方端点（2026-10-05 用户明确：不用任何第三方镜像）。
+     raw 被墙的网络自动落到 api.github.com（也是 GitHub 官方）读 base64 内容。 */
+  var RAW_BASE = 'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/';
+  var GH_API = 'https://api.github.com/repos/' + REPO + '/contents/';
   var FETCH_TIMEOUT = 5000;   // 单源超时（按优先级顺序试，典型情况第一个源就成功）
   var MIN_AUTO_DELAY = 1200;  // 自动弹窗距页面打开的最小间隔（不挡首屏渲染）
   var RETRY_DELAY = 15000;    // 自动检查失败后的静默重试间隔
@@ -41,12 +40,25 @@
     return location.protocol === 'http:' || location.protocol === 'https:';
   }
 
-  /* 候选地址：托管网页优先同源（部署内容=仓库内容），其余走镜像链 */
+  /* 候选地址：托管网页优先同源，然后 raw 直连，最后 api.github.com 兜底 */
   function candidates(file) {
     var list = [];
     if (hosted()) list.push(file);
-    MIRRORS.forEach(function (m) { list.push(m + file); });
+    list.push(RAW_BASE + file);
+    list.push(GH_API + file + '?ref=' + BRANCH);
     return list;
+  }
+
+  /* api.github.com contents 接口返回 base64 JSON；raw/同源返回纯文本。统一转纯文本 */
+  function ghApiContent(text) {
+    var t = String(text || '').trim();
+    if (t.charAt(0) === '{' && t.indexOf('"content"') >= 0) {
+      try {
+        var b64 = String(JSON.parse(t).content || '').replace(/\s+/g, '');
+        return decodeURIComponent(escape(atob(b64)));
+      } catch (e) { return ''; }
+    }
+    return t;
   }
 
   function fetchText(url, timeoutMs) {
@@ -70,8 +82,9 @@
   }
 
   /* 按优先级顺序逐个尝试（每源独立超时）：
-     同源(托管网页) → gh-proxy(带破缓存参数，回源即新鲜) → raw(权威) → jsDelivr(缓存最久，最后)。
-     ★不能并发竞速：最快的镜像可能缓存着旧内容（2026-10-05 事故：GitHub 上改了
+     同源(托管网页) → raw 直连（fetchText 自动加 ?t= 破 CDN 缓存）→ api.github.com
+     （GitHub 官方，raw 被墙网络的兜底）。
+     ★不能并发竞速：最快的源可能缓存着旧内容（2026-10-05 事故：GitHub 上改了
      版本号/公告，缓存旧值抢先返回，客户端误判"已是最新"不更新）。 */
   function fetchAny(file, timeoutMs) {
     var list = candidates(file);
@@ -87,7 +100,7 @@
 
   function fetchNotice() {
     return fetchAny(NOTICE_FILE, FETCH_TIMEOUT).then(function (text) {
-      var lines = String(text).replace(/^\uFEFF/, '').split(/\r?\n/);
+      var lines = ghApiContent(text).replace(/^\uFEFF/, '').split(/\r?\n/);
       var date = (lines.shift() || '').trim();
       var content = lines.join('\n').trim();
       if (!date) throw new Error('empty');
@@ -96,7 +109,10 @@
   }
   function fetchVersion() {
     return fetchAny(VER_FILE, FETCH_TIMEOUT)
-      .then(function (t) { return /^[0-9]+(\.[0-9]+)*$/.test(t.trim()) ? t.trim() : ''; })
+      .then(function (t) {
+        t = ghApiContent(t).trim();
+        return /^[0-9]+(\.[0-9]+)*$/.test(t) ? t : '';
+      })
       .catch(function () { return ''; });
   }
 
