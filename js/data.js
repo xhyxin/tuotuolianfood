@@ -1,5 +1,5 @@
 window.APP_DATA = {
-  "version": "2.81",
+  "version": "2.91",
   "updatedAt": "2026-10-03",
   "attitude": {
     "like": "assets/ui/like.png",

@@ -225,6 +225,19 @@ body::before {
 }
 #btnLang:hover { border-color: var(--accent); color: var(--accent-strong); transform: translateY(-2px); }
 #btnLang:active { transform: scale(.95); }
+
+/* ---------- 公告按钮（三端通用，2026-10-05 主题化：粉彩毛玻璃胶囊） ---------- */
+#btn-notice {
+  display: inline-flex; align-items: center; gap: 4px;
+  border: 1.5px solid var(--line-strong); background: var(--surface-strong); color: var(--ink);
+  padding: 7px 13px; border-radius: 999px; font-size: 13.5px; cursor: pointer;
+  font-family: inherit; letter-spacing: 1px; white-space: nowrap;
+  transition: transform .15s ease, border-color .15s ease, color .15s ease, background .15s ease;
+}
+#btn-notice:hover {
+  border-color: #f0a8c4; background: var(--rose-soft); color: #d6467f; transform: translateY(-2px);
+}
+#btn-notice:active { transform: scale(.95); }
 .lang-list { display: flex; flex-direction: column; gap: 8px; margin-top: 2px; }
 .lang-opt {
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
@@ -410,7 +423,7 @@ body::before {
   .logo { animation: none; }
   .card:hover, .card:hover .pic, .persona-chip:hover { animation: none; transform: none; }
   .dl-card { animation: none; }
-  .dl-btn:hover, #btnDownload:hover, #btnUpdate:hover, .dl-close:hover, #btnAbout:hover, #btnLang:hover, .lang-opt:hover { transform: none; }
+  .dl-btn:hover, #btnDownload:hover, #btnUpdate:hover, .dl-close:hover, #btnAbout:hover, #btnLang:hover, #btn-notice:hover, .lang-opt:hover { transform: none; }
 }
 
 /* ---------- 窄屏 ---------- */
@@ -429,6 +442,8 @@ body::before {
   #btnAbout .sm { display: inline; }
   #btnLang { padding: 7px 9px; font-size: 12.5px; flex: 0 0 auto; }
   #btnLang #langName { display: none; } /* 窄屏只留 🌐 图标 */
+  #btn-notice { padding: 7px 9px; font-size: 12.5px; flex: 0 0 auto; }
+  #btn-notice [data-i18n="btn.notice"] { display: none; } /* 窄屏只留 📢 图标 */
   .lang-opt { padding: 11px 15px; font-size: 14px; }
   #hintBar { margin: 8px 12px 0; padding: 6px 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 12.5px; }
   #personaBar {
