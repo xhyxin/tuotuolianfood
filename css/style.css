@@ -454,3 +454,47 @@ body::before {
   .dl-btn { font-size: 13.5px; }
   .dl-note { font-size: 11.5px; }
 }
+
+/* ★ 公告弹窗（2026-10-05，js/notice.js 用） */
+#notice-overlay {
+  position: fixed; inset: 0; z-index: 96; display: none;
+  align-items: center; justify-content: center; padding: 18px;
+  background: rgba(38, 58, 49, .42);
+}
+#notice-overlay.show { display: flex; }
+#notice-card {
+  width: min(430px, 92vw); max-height: 78vh; display: flex; flex-direction: column;
+  background: var(--surface-strong);
+  backdrop-filter: blur(18px) saturate(140%);
+  border: 2px solid var(--line-strong); border-radius: 22px;
+  box-shadow: var(--shadow), var(--inner-glass); padding: 16px 18px 14px;
+  animation: notice-pop .22s ease;
+}
+@keyframes notice-pop { from { transform: translateY(14px) scale(.96); opacity: 0; } }
+.notice-head { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+.notice-title { font-size: 15px; font-weight: 700; color: var(--ink); }
+.notice-date { font-size: 11px; color: var(--sub); font-family: var(--font-text); }
+.notice-newver {
+  margin-top: 8px; padding: 8px 12px; font-size: 13px; font-weight: 700;
+  color: var(--accent-strong); background: var(--accent-soft);
+  border: 1px solid var(--accent); border-radius: 10px;
+}
+.notice-body {
+  margin-top: 10px; padding: 10px 12px; overflow-y: auto;
+  font-size: 13px; line-height: 1.7; color: var(--ink); white-space: pre-wrap;
+  background: var(--surface-soft); border: 1.5px dashed var(--line); border-radius: 10px;
+  min-height: 60px; max-height: 40vh; font-family: var(--font-text);
+}
+.notice-btns { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+.notice-btn {
+  padding: 8px 16px; font-size: 13px; cursor: pointer; border-radius: 999px;
+  border: 1.5px solid var(--line-strong); background: var(--surface-strong); color: var(--ink);
+}
+.notice-btn:hover { border-color: var(--accent); color: var(--accent-strong); }
+.notice-btn.primary {
+  border: none; color: #fff; font-weight: 700;
+  background: linear-gradient(135deg, #86d97d, #46ad5c);
+  box-shadow: 0 4px 14px rgba(70, 173, 92, .38);
+}
+.notice-btn.primary:hover { filter: brightness(1.05); color: #fff; }
+@media (prefers-reduced-motion: reduce) { #notice-card { animation: none; } }

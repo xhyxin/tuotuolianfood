@@ -88,6 +88,7 @@
       "toast.update.latest": "已是最新版本。",
       "toast.update.notsupport": "当前打开方式不支持在线更新。",
       "toast.update.fail": "更新失败：{msg}",
+      "btn.notice": "公告", "notice.title": "📢 公告", "notice.ok": "知道了", "notice.dontShow": "不再提示", "notice.newVer": "发现新版本 v{remote}（当前 v{local}）", "notice.none": "暂无公告",
       "toast.update.filehint": "当前是直接双击打开的网页，浏览器不允许联网更新。请关闭后使用文件夹里的「打开查询器.bat」打开，即可在线检查更新。"
     },
     "en": {
@@ -150,6 +151,7 @@
       "toast.update.latest": "You're already on the latest version.",
       "toast.update.notsupport": "Online update isn't available in this mode.",
       "toast.update.fail": "Update failed: {msg}",
+      "btn.notice": "Notice", "notice.title": "📢 Announcement", "notice.ok": "Got it", "notice.dontShow": "Do not show again", "notice.newVer": "New version v{remote} found (current v{local})", "notice.none": "No announcement yet",
       "toast.update.filehint": "You opened the page by double-clicking the file, so the browser blocks online updates. Please close it and start via 打开查询器.bat in the folder."
     },
     "ko-KR": {
@@ -212,6 +214,7 @@
       "toast.update.latest": "이미 최신 버전이에요.",
       "toast.update.notsupport": "이 실행 방식에서는 온라인 업데이트를 지원하지 않아요.",
       "toast.update.fail": "업데이트 실패: {msg}",
+      "btn.notice": "공지", "notice.title": "📢 공지", "notice.ok": "알겠어요", "notice.dontShow": "다시 표시 안 함", "notice.newVer": "새 버전 발견: v{remote}（현재 v{local}）", "notice.none": "아직 공지가 없어",
       "toast.update.filehint": "파일을 더블클릭으로 열면 브라우저가 온라인 업데이트를 막아요. 닫고 폴더 안의 「打开查询器.bat」로 실행해 주세요."
     },
     "ja-JP": {
@@ -274,6 +277,7 @@
       "toast.update.latest": "もう最新版だよ。",
       "toast.update.notsupport": "この開き方ではオンライン更新できないよ。",
       "toast.update.fail": "更新失敗：{msg}",
+      "btn.notice": "公告", "notice.title": "📢 お知らせ", "notice.ok": "わかった", "notice.dontShow": "今後表示しない", "notice.newVer": "新しいバージョン v{remote}（現在 v{local}）", "notice.none": "お知らせはまだないよ",
       "toast.update.filehint": "ダブルクリックで開くとブラウザーがオンライン更新をブロックするよ。閉じてからフォルダ内の「打开查询器.bat」で起動してね。"
     }
   };
