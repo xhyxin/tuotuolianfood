@@ -484,6 +484,33 @@
   if (!isLocal) {
     $("btnDownload").style.display = "inline-block";
     bindModal("btnDownload", "dlModal", "btnDlClose");
+
+    // 蓝奏云带密码的分享链接（index.html 里 <a class="dl-btn lz" data-lzpwd="密码">）：
+    // 蓝奏云页面跨域无法代填密码，点击时把密码自动复制到剪贴板，用户粘贴即可；
+    // 复制失败也照样提示密码明文，用户可手抄（弹窗下方文字里也写明了密码）。
+    var lzBtns = document.querySelectorAll("#dlModal a.dl-btn.lz[data-lzpwd]");
+    for (var li = 0; li < lzBtns.length; li++) {
+      (function (btn) {
+        btn.addEventListener("click", function () {
+          var pwd = btn.getAttribute("data-lzpwd");
+          var done = function () { toast(T("toast.lz.pwd", { pwd: pwd })); };
+          var p = null;
+          try { p = navigator.clipboard ? navigator.clipboard.writeText(pwd) : null; }
+          catch (err) { p = null; } // 文档失焦等场景 writeText 会同步抛异常，走兜底
+          if (p && p.then) p.then(done, done);
+          else {
+            var ta = document.createElement("textarea");
+            ta.value = pwd;
+            ta.style.cssText = "position:fixed;opacity:0";
+            document.body.appendChild(ta);
+            ta.select();
+            try { document.execCommand("copy"); } catch (err2) { /* 老 WebView 忽略 */ }
+            document.body.removeChild(ta);
+            done();
+          }
+        });
+      })(lzBtns[li]);
+    }
   }
   render();
 })();

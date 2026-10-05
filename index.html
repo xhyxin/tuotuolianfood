@@ -6,7 +6,7 @@
 <title>坨坨脸 · 角色食物图鉴</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍰</text></svg>">
 <link rel="preload" href="assets/fonts/bobohei-full.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="css/style.css?v=2.92-6ac35c80">
+<link rel="stylesheet" href="css/style.css?v=2.93-6ac36717">
 </head>
 <body>
 <header id="topbar">
@@ -54,8 +54,13 @@
 <div id="toast" class="hidden"></div>
 
 <!-- 客户端下载弹窗：仅网页版显示（app.js 控制）。
-     ★换下载地址只改下面 4 个 href：GitHub 直链资产名固定 pc.zip / apk.zip，
-       蓝奏云为分享页链接（无密码），都在新标签页打开。 -->
+     ★以后换下载链接只改这里：
+       · GitHub 直链：资产名固定 pc.zip / apk.zip，换版本只更新 release 资产，链接不用动
+       · 蓝奏云：href = 分享页链接；电脑端分享如果带密码，在 <a> 上写 data-lzpwd="密码"，
+         点击按钮时会自动把密码复制到剪贴板（蓝奏云页面跨域无法代填，粘贴即可）；
+         无密码的分享（如安卓端）不加 data-lzpwd 就行
+       · 改完记得同步：下面 dl-note 默认文案 + i18n.js 四语的 dl.note / toast.lz.pwd，
+         然后 双击 网页\一键打包网页版.bat 重打包上传 -->
 <div id="dlModal" class="hidden">
   <div class="dl-mask"></div>
   <div class="dl-card" role="dialog" aria-label="下载客户端">
@@ -66,17 +71,17 @@
       <span class="dl-tag pc" data-i18n="dl.tag.pc">💻 电脑端</span>
       <div class="dl-btns">
         <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/pc.zip" target="_blank" rel="noopener" data-i18n="dl.btn.gh">GitHub 下载</a>
-        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/isfse48c260d" target="_blank" rel="noopener" data-i18n="dl.btn.lz">蓝奏云 下载</a>
+        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iBINr4ay2xod" target="_blank" rel="noopener" data-lzpwd="4tbg" data-i18n="dl.btn.lz">蓝奏云 下载</a>
       </div>
     </div>
     <div class="dl-row">
       <span class="dl-tag apk" data-i18n="dl.tag.apk">📱 安卓端</span>
       <div class="dl-btns">
         <a class="dl-btn gh" href="https://github.com/xhyxin/tuotuolianfood/releases/download/v2.0pc-zip/apk.zip" target="_blank" rel="noopener" data-i18n="dl.btn.gh">GitHub 下载</a>
-        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iUxfS48c2dte" target="_blank" rel="noopener" data-i18n="dl.btn.lz">蓝奏云 下载</a>
+        <a class="dl-btn lz" href="https://kejiaixinyue.lanzn.com/iKGVf48urxpi" target="_blank" rel="noopener" data-i18n="dl.btn.lz">蓝奏云 下载</a>
       </div>
     </div>
-    <p class="dl-note" data-i18n-html="dl.note">GitHub 直链国内可能较慢，卡住就换蓝奏云（无需密码）。<br>
+    <p class="dl-note" data-i18n-html="dl.note">GitHub 直链国内可能较慢，卡住就换蓝奏云：电脑端密码 <b>4tbg</b>（点「蓝奏云 下载」会自动复制），安卓端无需密码。<br>
       电脑端：解压后双击 exe；安卓端：解压出 apk 安装（允许未知来源）。</p>
   </div>
 </div>
@@ -118,11 +123,11 @@
   </div>
 </div>
 
-<script src="js/data.js?v=2.92-6ac35c80"></script>
-<script src="js/i18n.js?v=2.92-6ac35c80"></script>
-<script src="js/names.js?v=2.92-6ac35c80"></script>
-<script src="js/notice.js?v=2.92-6ac35c80"></script>
-<script src="js/updater.js?v=2.92-6ac35c80"></script>
-<script src="js/app.js?v=2.92-6ac35c80"></script>
+<script src="js/data.js?v=2.93-6ac36717"></script>
+<script src="js/i18n.js?v=2.93-6ac36717"></script>
+<script src="js/names.js?v=2.93-6ac36717"></script>
+<script src="js/notice.js?v=2.93-6ac36717"></script>
+<script src="js/updater.js?v=2.93-6ac36717"></script>
+<script src="js/app.js?v=2.93-6ac36717"></script>
 </body>
 </html>
