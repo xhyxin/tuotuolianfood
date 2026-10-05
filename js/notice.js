@@ -33,7 +33,7 @@
     'https://raw.githubusercontent.com/' + REPO + '/' + BRANCH + '/',
     'https://cdn.jsdelivr.net/gh/' + REPO + '@' + BRANCH + '/',
   ];
-  var FETCH_TIMEOUT = 8000;   // 单源超时（并发竞速下只有所有源都慢才等满）
+  var FETCH_TIMEOUT = 5000;   // 单源超时（按优先级顺序试，典型情况第一个源就成功）
   var MIN_AUTO_DELAY = 1200;  // 自动弹窗距页面打开的最小间隔（不挡首屏渲染）
   var RETRY_DELAY = 15000;    // 自动检查失败后的静默重试间隔
 
@@ -69,25 +69,24 @@
     });
   }
 
-  /* 并发竞速：所有候选同时发出，第一个成功的胜出（提速核心） */
-  function fetchRace(file, timeoutMs) {
+  /* 按优先级顺序逐个尝试（每源独立超时）：
+     同源(托管网页) → gh-proxy(带破缓存参数，回源即新鲜) → raw(权威) → jsDelivr(缓存最久，最后)。
+     ★不能并发竞速：最快的镜像可能缓存着旧内容（2026-10-05 事故：GitHub 上改了
+     版本号/公告，缓存旧值抢先返回，客户端误判"已是最新"不更新）。 */
+  function fetchAny(file, timeoutMs) {
     var list = candidates(file);
     return new Promise(function (resolve, reject) {
-      var settled = false, left = list.length;
-      if (!left) { reject(new Error('no sources')); return; }
-      list.forEach(function (url) {
-        fetchText(url, timeoutMs).then(function (txt) {
-          if (!settled) { settled = true; resolve(txt); }
-        }).catch(function () {
-          left -= 1;
-          if (!left && !settled) { settled = true; reject(new Error('all sources failed')); }
-        });
-      });
+      var i = 0;
+      var tryNext = function () {
+        if (i >= list.length) { reject(new Error('all sources failed')); return; }
+        fetchText(list[i], timeoutMs).then(resolve).catch(function () { i += 1; tryNext(); });
+      };
+      tryNext();
     });
   }
 
   function fetchNotice() {
-    return fetchRace(NOTICE_FILE, FETCH_TIMEOUT).then(function (text) {
+    return fetchAny(NOTICE_FILE, FETCH_TIMEOUT).then(function (text) {
       var lines = String(text).replace(/^\uFEFF/, '').split(/\r?\n/);
       var date = (lines.shift() || '').trim();
       var content = lines.join('\n').trim();
@@ -96,7 +95,7 @@
     });
   }
   function fetchVersion() {
-    return fetchRace(VER_FILE, FETCH_TIMEOUT)
+    return fetchAny(VER_FILE, FETCH_TIMEOUT)
       .then(function (t) { return /^[0-9]+(\.[0-9]+)*$/.test(t.trim()) ? t.trim() : ''; })
       .catch(function () { return ''; });
   }
@@ -106,8 +105,18 @@
     try { return JSON.parse(localStorage.getItem('noticeSeen') || '{}') || {}; }
     catch (e) { return {}; }
   }
-  function markSeen(date, ver) {
-    try { localStorage.setItem('noticeSeen', JSON.stringify({ date: date, ver: ver })); } catch (e) { /* 忽略 */ }
+  /* 公告"已读"标记 = 日期+内容 的哈希：同一天改了公告内容也要重新弹
+     （2026-10-05：只按日期判断，用户改了公告正文但日期没动，玩家端永远不弹） */
+  function noticeHash(n) {
+    var s = (n.date || '') + '\n' + (n.content || '');
+    var h = 5381;
+    for (var i = 0; i < s.length; i++) { h = ((h << 5) + h + s.charCodeAt(i)) | 0; }
+    return String(h >>> 0);
+  }
+  function markSeen(notice, ver) {
+    try {
+      localStorage.setItem('noticeSeen', JSON.stringify({ date: notice.date, ver: ver || '', h: noticeHash(notice) }));
+    } catch (e) { /* 忽略 */ }
   }
   function cacheNotice(obj) {
     try { localStorage.setItem('noticeCache', JSON.stringify(obj)); } catch (e) { /* 忽略 */ }
@@ -156,7 +165,7 @@
     el = overlay;
     el.querySelector('#notice-ok').onclick = close;
     el.querySelector('#notice-dontshow').onclick = function () {
-      if (memo.notice) markSeen(memo.notice.date, memo.remoteVer);
+      if (memo.notice) markSeen(memo.notice, memo.remoteVer);
       close();
     };
     return el;
@@ -228,6 +237,7 @@
     return {
       date: memo.notice.date,
       content: memo.notice.content,
+      h: noticeHash(memo.notice),
       remoteVer: memo.remoteVer,
       versionNew: isVersionNew(memo.remoteVer),
     };
@@ -243,14 +253,14 @@
       }
       var info = currentInfo();
       if (!info) return;
-      var noticeNew = info.date !== seen().date;
+      var noticeNew = info.h !== seen().h; // 日期+内容哈希变了才算新公告
       if (!info.versionNew && !noticeNew) return; // 都不新 → 静默
       var wait = MIN_AUTO_DELAY - (Date.now() - bootedAt);
       setTimeout(function () {
         /* 弹之前再核对一次（期间用户可能已手动看过并点了「不再提示」） */
         var i2 = currentInfo();
         if (!i2 || isOpen()) return;
-        var noticeNew2 = i2.date !== seen().date;
+        var noticeNew2 = i2.h !== seen().h;
         if (!i2.versionNew && !noticeNew2) return;
         showPopup(i2, false);
       }, wait > 0 ? wait : 0);
