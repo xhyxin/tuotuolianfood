@@ -1,6 +1,6 @@
 window.APP_DATA = {
-  "version": "2.97",
-  "updatedAt": "2026-10-03",
+  "version": "2.99",
+  "updatedAt": "2026-10-24",
   "attitude": {
     "like": "assets/ui/like.png",
     "hate": "assets/ui/hate.png",
@@ -5268,6 +5268,47 @@ window.APP_DATA = {
           "F84",
           "F88",
           "F9"
+        ]
+      },
+      "source": "manual"
+    },
+    {
+      "id": "Coffe",
+      "name": "可菲",
+      "en": "Coffe",
+      "group": "韩服3星",
+      "personality": "calm",
+      "aliases": [
+        "Coffe",
+        "코페"
+      ],
+      "img": "assets/chars/Coffe.png",
+      "fav": {
+        "love": [
+          "F55",
+          "F84"
+        ],
+        "like": [
+          "F31",
+          "F32",
+          "F33",
+          "F34",
+          "F35",
+          "F36",
+          "F37",
+          "F6",
+          "F48",
+          "F78",
+          "F9",
+          "F90"
+        ],
+        "hate": [
+          "F16",
+          "F56",
+          "F87",
+          "F3",
+          "F47",
+          "F82"
         ]
       },
       "source": "manual"
